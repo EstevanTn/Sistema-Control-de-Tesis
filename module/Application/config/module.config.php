@@ -71,6 +71,7 @@ return [
             Controller\IndexController::class => InvokableFactory::class,
             Controller\AuthController::class => InvokableFactory::class,
             Controller\EsquemaController::class => InvokableFactory::class,
+            Controller\AsesorController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
