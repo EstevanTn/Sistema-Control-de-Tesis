@@ -64,6 +64,16 @@ return [
                     ],
                 ],
             ],
+            'programacion' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/programacion[/:action]',
+                    'defaults' => [
+                        'controller' => Controller\AsesorController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
@@ -72,6 +82,7 @@ return [
             Controller\AuthController::class => InvokableFactory::class,
             Controller\EsquemaController::class => InvokableFactory::class,
             Controller\AsesorController::class => InvokableFactory::class,
+            Controller\ProgramacionController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
