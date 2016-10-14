@@ -69,7 +69,7 @@ return [
                 'options' => [
                     'route'    => '/programacion[/:action]',
                     'defaults' => [
-                        'controller' => Controller\AsesorController::class,
+                        'controller' => Controller\ProgramacionController::class,
                         'action'     => 'index',
                     ],
                 ],

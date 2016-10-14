@@ -18,6 +18,10 @@ class ProgramacionController extends AbstractActionController
         return new ViewModel();
     }
 
-
+    public function nuevoAction()
+    {
+        $this->layout()->title = 'Nueva Programación';
+        return new ViewModel();
+    }
     
 }
