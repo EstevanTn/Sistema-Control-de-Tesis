@@ -1,0 +1,42 @@
+<div class="page-header">
+    <h3>Programaciones</h3>
+</div>
+
+<div>
+    <div class="form-group">
+        <a href="<?= $this->url('programacion', array('action'=>'nuevo'))?>" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> NUEVO</a>
+        <a class="btn btn-warning"><i class="glyphicon glyphicon-th"></i> GENERAR REPORTES</a>
+    </div>
+    <form method="post" class="form-horizontal">
+        <div class="col-lg-5">
+            <div class="input-group">
+                <div class="input-group-addon">Fecha Inicio</div>
+                <input type="date" class="form-control" />
+            </div>
+            <br>
+        </div>
+        <div class="col-lg-5">
+            <div class="input-group">
+                <div class="input-group-addon">Fecha Termino</div>
+                <input type="date" class="form-control" />
+            </div>
+            <br>
+        </div>
+        <div class="col-lg-2">
+            <div class="pull-right">
+                <button class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> BUSCAR</button>
+            </div>
+        </div>
+    </form>
+</div>
+<table class="table table-bordered table-hover">
+    <thead>
+    <th>#</th>
+    <th>Fecha</th>
+    <th>Hora</th>
+    <th>Detalles</th>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>

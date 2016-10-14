@@ -10,18 +10,18 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class AsesorController extends AbstractActionController
+class ProgramacionController extends AbstractActionController
 {
     public function indexAction()
     {
-        $this->layout()->title = 'Lista de Asesores';
+        $this->layout()->title = 'Lista de Programaciones';
         return new ViewModel();
     }
 
-    public function nuevoAction(){
-        $this->layout()->title = 'Nuevo asesor';
+    public function nuevoAction()
+    {
+        $this->layout()->title = 'Nueva Programación';
         return new ViewModel();
     }
-
     
 }
