@@ -1,0 +1,45 @@
+<div class="page-header">
+    <h3>Usuarios</h3>
+</div>
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="btn-group">
+            <a href="<?= $this->url('usuario',array('action'=>'nuevo')) ?>" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> NUEVO</a>
+            <a href="#" class="btn btn-warning"><i class="glyphicon glyphicon-th"></i> GENERAR REPORTE</a>
+        </div>
+    </div>
+</div>
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Buscar por</label>
+        <div class="col-lg-2">
+            <select name="filtro" class="form-control">
+                <option value="usuario">Usuario</option>
+                <option value="nombre">Nombre</option>
+                <option value="tipo">Tipo</option>
+            </select>
+        </div>
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" name="q" id="q" class="form-control" />
+                <div class="input-group-btn">
+                    <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="row table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Usuario</th>
+            <th>Nombres</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?= var_dump($this->data)?>
+    </tbody>
+</table>
