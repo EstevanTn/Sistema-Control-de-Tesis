@@ -2,6 +2,83 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 3.0.3 - 2016-08-29
+
+### Added
+
+- [#198](https://github.com/zendframework/zend-mvc/pull/198) adds a factory for
+  the `SendResponseListener`, to ensure that it is injected with an event
+  manager instance from the outset; this fixes issues with delegator factories
+  that registered listeners with it in previous versions.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- [#184](https://github.com/zendframework/zend-mvc/pull/184) provides a
+  performance optimization for `DELETE` requests to `AbstractRestfulController`
+  instances.
+- [#187](https://github.com/zendframework/zend-mvc/pull/187) removes a typehint
+  for `Exception` from an argument in
+  `DispatchListener::marshalControllerNotFoundEvent()`, allowing it to be used
+  with PHP 7 `Throwable` instances.
+
+## 3.0.2 - 2016-06-30
+
+### Added
+
+- [#163](https://github.com/zendframework/zend-mvc/pull/163) adds support to the
+  `AcceptableViewModelSelector` plugin for controller maps in the `view_manager`
+  configuration in the format:
+
+  ```php
+  [
+      'ControllerClassName' => 'view/name',
+  ]
+  ```
+
+  This fixes an issue observed when running with Apigility.
+
+- [#163](https://github.com/zendframework/zend-mvc/pull/163) adds support to the
+  `InjectTemplateListener` for specifying whether or not to prefer the
+  controller matched during routing via routing configuration:
+
+  ```php
+  'route-name' => [
+      /* ... */
+      'options' => [
+          /* ... */
+          'defaults' => [
+              /* ... */
+              'prefer_route_match_controller' => true,
+          ],
+      ],
+  ],
+  ```
+
+  This allows actions that might otherwise skip injection of the template
+  to force the injection.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- [#161](https://github.com/zendframework/zend-mvc/pull/161) fixes the
+  `DispatchListener::marshalBadControllerEvent()` method to allow either
+  `Throwable` or `Exception` types for the `$exception` argument.
+
 ## 3.0.1 - 2016-06-23
 
 ### Added

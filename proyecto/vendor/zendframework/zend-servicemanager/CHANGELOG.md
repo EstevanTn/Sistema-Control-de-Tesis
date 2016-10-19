@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 3.1.1 - 2016-07-15
+
+### Added
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- [#136](https://github.com/zendframework/zend-servicemanager/pull/136) removes
+  several imports to classes in subnamespaces within the `ServiceManager`
+  classfile, removing potential name resolution conflicts that occurred in edge
+  cases when testing.
+
 ## 3.1.0 - 2016-06-01
 
 ### Added

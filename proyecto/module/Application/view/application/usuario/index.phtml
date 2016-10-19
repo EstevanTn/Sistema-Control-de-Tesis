@@ -1,0 +1,66 @@
+<div class="row-fluid">
+    <div class="control-group">
+        <div class="btn-group">
+            <a href="<?= $this->url('usuario',array('action'=>'nuevo')) ?>" class="btn btn-success"><i class="icon-plus"></i> NUEVO</a>
+            <a href="#" class="btn btn-warning"><i class="icon-th"></i> GENERAR REPORTE</a>
+        </div>
+    </div>
+    <br>
+</div>
+<div class="row-fluid">
+    <form class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label">Buscar por</label>
+            <div class="controls">
+                <div class="span12">
+                    <select name="filtro" class="form-control">
+                        <option value="usuario">Usuario</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="tipo">Tipo</option>
+                    </select>
+                    <input type="text" name="q" id="q" class="form-control" />
+                    <button class="btn btn-default"><i class="icon-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<?= PAGINATION_HTML ?>
+<div class="row-fluid">
+    <div class="span12">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Usuario</th>
+                <th>Nombres</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($usuarios as $usuario):?>
+                <tr>
+                    <td><?= $this->escapeHtml($usuario->id) ?></td>
+                    <td><?= $this->escapeHtml($usuario->login) ?></td>
+                    <td><?= $this->escapeHtml($usuario->nombres) ?></td>
+                    <td><?= $this->escapeHtml($usuario->tipo_nombre) ?></td>
+                    <td><?= $this->escapeHtml($usuario->estado) ?></td>
+                    <td class="center">
+                        <div class="btn-group">
+                            <button data-title="Usuario #<?=$usuario->id?>" data-role="modal-async" data-style="modal-lg" data-icon="halflings-icon eye-open" data-href="<?= $this->url('usuario', ['action'=>'ver','id'=>$usuario->id])?>" class="btn btn-info"><i class="halflings-icon eye-open white"></i></button>
+                            <?php
+                            if($usuario->tipo_nombre!='ADMINISTRADOR'){
+                                ?>
+                                <a href="<?= $this->url('usuario', ['action'=>'editar','id'=>$usuario->id])?>" class="btn btn-success"><i class="icon-edit"></i></a>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                    </td>
+                </tr>
+            <?endforeach;?>
+            </tbody>
+        </table>
+    </div>
+</div>

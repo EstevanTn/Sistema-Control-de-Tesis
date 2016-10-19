@@ -6,108 +6,96 @@
         </ul>
         <form class="tab-content clearfix" method="post">
             <div class="tab-pane active" id="estudiante">
-                <br>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Código</label>
-                        <div class="col-lg-3">
-                            <div class="input-group">
-                                <input class="form-control" type="text" name="codigo">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
-                                </div>
-                            </div>
+                <div class="span9">
+                    <div class="control-group">
+                        <label class="control-label">Código</label>
+                        <div class="controls">
+                            <input class="form-control" type="text" name="codigo">
+                            <button class="btn btn-default" type="button"><i class="icon-search"></i></button>
                         </div>
-                        <label class="col-lg-2 control-label">DNI</label>
-                        <div class="col-lg-3">
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">DNI</label>
+                        <div class="controls">
                             <input class="form-control" type="text" name="dni" readonly>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Nombres</label>
-                        <div class="col-lg-10">
-                            <input type="text" class="form-control" name="nombres" readonly>
+                    <div class="control-group">
+                        <label class="control-label">Nombres</label>
+                        <div class="controls">
+                            <input type="text" class="form-control size-y" name="nombres" readonly>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Ap. Paterno</label>
-                        <div class="col-lg-10">
-                            <input type="text" class="form-control" name="ape_pat" readonly>
+                    <div class="control-group">
+                        <label class="control-label">Ap. Paterno</label>
+                        <div class="controls">
+                            <input type="text" class="form-control size-y" name="ape_pat" readonly>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Ap. Materno</label>
-                        <div class="col-lg-10">
-                            <input type="text" class="form-control" name="ape_mat" readonly>
+                    <div class="control-group">
+                        <label class="control-label">Ap. Materno</label>
+                        <div class="controls">
+                            <input type="text" class="form-control size-y" name="ape_mat" readonly>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Fecha Nac.</label>
-                        <div class="col-lg-3">
+                    <div class="control-group">
+                        <label class="control-label">Fecha Nac.</label>
+                        <div class="controls">
                             <input type="date" class="form-control" readonly />
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">N° Tramite</label>
-                        <div class="col-lg-3">
-                            <div class="input-group">
+                    <div class="control-group">
+                        <label class="control-label">N° Tramite</label>
+                        <div class="controls">
+                            <div class="input-prepend input-append">
                                 <input type="text" class="form-control" />
-                                <div class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
-                                </div>
+                                <button class="btn btn-default" type="button"><i class="icon-search"></i></button>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="pull-right">
-                    <a class="btn btn-info" data-toggle="tab" href="#esquema">Siguiente <i class="glyphicon glyphicon-arrow-right"></i></a>
+                    <div class="control-group pull-right">
+                        <a class="btn btn-info" data-toggle="tab" href="#esquema">Siguiente <i class="icon-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="tab-pane" id="esquema">
-                <br>
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">Titulo de Tesis</label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control" placeholder="Ingrese titulo de tesis" />
+            <div class="tab-pane center" id="esquema">
+                <div class="span8">
+                    <div class="control-group">
+                        <label class="control-label">Titulo de Tesis</label>
+                        <div class="controls">
+                            <input type="text" class="form-control size-y" placeholder="Ingrese titulo de tesis" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Palabras clave</label>
+                        <div class="controls">
+                            <textarea class="form-control size-y"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Objetivos Principales</label>
+                        <div class="controls">
+                            <textarea class="cleditor size-y"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Objetivos Secundarios</label>
+                        <div class="controls">
+                            <textarea class="cleditor size-y"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">EStado</label>
+                        <div class="controls">
+                            <input type="text" readonly class="form-control size-y" value="PRESENTADO" />
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">Palabras clave</label>
-                    <div class="col-lg-10">
-                        <textarea class="form-control"></textarea>
+                <div class="span4">
+                    <div class="btn-group">
+                        <a href="#estudiante" data-toggle="tab" class="btn btn-info"><i class="icon-arrow-left"></i> Atras</a>
+                        <button class="btn btn-success"><i class="icon-saved"></i> GUARDAR</button>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">Objetivos Principales</label>
-                    <div class="col-lg-10">
-                        <textarea class="form-control"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">Objetivos Secundarios</label>
-                    <div class="col-lg-10">
-                        <textarea class="form-control"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">EStado</label>
-                    <div class="col-lg-3">
-                        <input type="text" class="form-control" value="PRESENTADO" />
-                    </div>
-                </div>
-                <div class="pull-right">
-                    <a href="#estudiante" data-toggle="tab" class="btn btn-info"><i class="glyphicon glyphicon-arrow-left"></i> Atras</a>
-                    <button class="btn btn-success"><i class="glyphicon glyphicon-saved"></i> GUARDAR</button>
                 </div>
             </div>
         </form>

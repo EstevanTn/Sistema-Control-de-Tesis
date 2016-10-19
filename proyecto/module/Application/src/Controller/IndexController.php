@@ -14,8 +14,8 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        session_start();
-        if(isset($_SESSION["session"])){
+        if(isset($_SESSION[SESSION_NAME])){
+            $this->layout()->title = 'Intranet Control Tesis';
             return new ViewModel();
         }else {
             $this->redirect()->toRoute('auth');

@@ -47,10 +47,14 @@ return [
             'esquema' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/esquema[/:action]',
+                    'route'    => '/esquema[/:action[/:id]]',
                     'defaults' => [
                         'controller' => Controller\EsquemaController::class,
                         'action'     => 'index',
+                        'constraints'   =>  [
+                            'action'    =>  '[a-z]+',
+                            'id' => '[0-9]+'
+                        ]
                     ],
                 ],
             ],
@@ -74,13 +78,25 @@ return [
                     ],
                 ],
             ],
+            'usuario' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/usuario[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => Controller\UsuarioController::class,
+                        'action'     => 'index',
+                        'constraints'   =>  [
+                            'action'    =>  '[a-z]+',
+                            'id' => '[0-9]+'
+                        ]
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
-            Controller\AuthController::class => InvokableFactory::class,
-            Controller\EsquemaController::class => InvokableFactory::class,
             Controller\AsesorController::class => InvokableFactory::class,
             Controller\ProgramacionController::class => InvokableFactory::class,
         ],
@@ -94,6 +110,7 @@ return [
         'template_map' => [
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
             'layout/layout0'           => __DIR__ . '/../view/layout/layout0.phtml',
+            'layout/modal'           => __DIR__ . '/../view/layout/modal.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',

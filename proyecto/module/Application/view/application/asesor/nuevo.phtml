@@ -6,73 +6,66 @@
     <div class="tab-content">
         <br>
         <div class="tab-pane active" id="asesor">
-            <div class="col-lg-12">
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">Código</label>
-                    <div class="col-lg-3">
-                        <div class="input-group">
+            <div class="span9">
+                <div class="control-group">
+                    <label class="control-label">Código</label>
+                    <div class="controls">
+                        <div class="input-prepend input-append">
                             <input type="text" class="form-control" />
-                            <div class="input-group-btn">
-                                <a href="#" class="btn btn-default" ><i class="glyphicon glyphicon-search"></i></a>
-                            </div>
+                            <a href="#" class="btn btn-default" ><i class="icon-search"></i></a>
                         </div>
                     </div>
-                    <label class="col-lg-2 control-label">DNI</label>
-                    <div class="col-lg-3">
-                        <input type="tex" readonly class="form-control" />
+                </div>
+                <div class="control-group">
+                    <label class="control-label">DNI</label>
+                    <div class="controls">
+                        <input type="text" readonly class="form-control" />
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">Nombres</label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control" name="nombres" readonly>
+                <div class="control-group">
+                    <label class="control-label">Nombres</label>
+                    <div class="controls">
+                        <input type="text" class="form-control size-y" name="nombres" readonly>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">Ap. Paterno</label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control" name="ape_pat" readonly>
+                <div class="control-group">
+                    <label class="control-label">Ap. Paterno</label>
+                    <div class="controls">
+                        <input type="text" class="form-control size-y" name="ape_pat" readonly>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">Ap. Materno</label>
-                    <div class="col-lg-10">
+                <div class="control-group">
+                    <label class="control-label">Ap. Materno</label>
+                    <div class="controls">
                         <input type="text" class="form-control" name="ape_mat" readonly>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-12">
                 <div class="form-group pull-right">
                     <a href="#asesorados" data-toggle="tab" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> AGREGAR ASESORADO</a>
                     <button class="btn btn-primary"><i class="glyphicon glyphicon-saved"></i> GUARDAR</button>
                 </div>
             </div>
         </div>
+        <?=\Application\TnqSoft\Functions::getPaginacion()?>
         <div class="tab-pane" id="asesorados">
-            <div class="col-lg-12">
-                <div class="form-group">
-                    <button class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button>
-                    <button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
+            <div class="span12">
+                <div class="control-group">
+                    <div class="btn-group">
+                        <button class="btn btn-success"><i class="icon-plus"></i></button>
+                        <button class="btn btn-danger"><i class="icon-remove"></i></button>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-12">
-                <table class="row table table-bordered table-hover">
-                    <thead>
-                        <th>#</th>
-                        <th>Alumno</th>
-                        <th>Titulo Tesis</th>
-                    </thead>
-                    <tbody>
+            <table class="row-fluid table table-bordered table-hover">
+                <thead>
+                <th>#</th>
+                <th>Alumno</th>
+                <th>Titulo Tesis</th>
+                </thead>
+                <tbody>
 
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
 </form>

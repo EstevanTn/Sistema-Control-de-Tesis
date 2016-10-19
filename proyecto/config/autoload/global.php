@@ -10,7 +10,23 @@
  * control, so do not include passwords or other sensitive information in this
  * file.
  */
+session_start();
+define('SESSION_NAME', 'tnqSoftCtrlTesis');
+define('COOKIE_NAME', 'tnqSoftCtrlTesis');
 
 return [
-    // ...
+    /*'db' => array(
+        'driver' => 'Pdo',
+        'dsn'            => 'mysql:dbname=control_tesis;hostname=localhost',
+        'username'       => 'root',
+        'password'       => '',
+        'driver_options' => array(
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+        ),
+    ),
+    'service_manager' => array(
+        'factories' => array(
+            'Zend\Db\Adapter\Adapter' => 'Zend\Db\Adapter\AdapterServiceFactory',
+        ),
+    ),*/
 ];
