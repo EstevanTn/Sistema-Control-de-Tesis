@@ -18,4 +18,8 @@ class Estudiante
     public $estado;
     public $dni;
 
+    public function exchangeArray($data){
+        
+    }
+
 }

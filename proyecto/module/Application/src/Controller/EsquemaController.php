@@ -30,7 +30,11 @@ class EsquemaController extends AbstractActionController
     }
     
     public function editarAction(){
-        return new ViewModel();
+        $id = $this->params('id');
+        $this->layout()->title = 'Editanto Esquema #'.$id;
+        return new ViewModel([
+            'esquema' => $this->table->getEsquema($id),
+        ]);
     }
     
 }

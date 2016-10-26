@@ -38,7 +38,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `pa_insertar_usuario` (IN `nom_usu` 
     END$$
 
 --
--- Functions
+-- FileExplorer
 --
 DROP FUNCTION IF EXISTS `func_rank`$$
 CREATE DEFINER=`root`@`localhost` FUNCTION `func_rank` () RETURNS INT(11) NO SQL

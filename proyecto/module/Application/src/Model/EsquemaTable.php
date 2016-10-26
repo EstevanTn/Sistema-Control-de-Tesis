@@ -23,10 +23,17 @@ class EsquemaTable
         $this->tableGateway = $table;
     }
 
-    public function fetchAll(){
+    public function fetchAll()
+    {
         Functions::createPagination($this->tableGateway);
-        return $this->tableGateway->select(function(Select $select){
-            $select->where('tram_id <='.PAGINATION_START)->order('tram_id DESC')->limit(10);
+        return $this->tableGateway->select(function (Select $select) {
+            $select->where('tram_id <=' . PAGINATION_START)->order('tram_id DESC')->limit(10);
         });
     }
+
+    public function getEsquema($id){
+        return $this->tableGateway->select(['tram_id'=>$id]);
+    }
+
+
 }
