@@ -119,6 +119,20 @@ return [
                     ],
                 ],
             ],
+            'tramite' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/tramite[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => Controller\TramiteController::class,
+                        'action'     => 'index',
+                        'constraints'   =>  [
+                            'action'    =>  '[a-z]+',
+                            'id' => '[0-9]+'
+                        ]
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [

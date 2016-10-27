@@ -79,6 +79,17 @@ class Module implements ConfigProviderInterface
                     $resultSetPrototype->setArrayObjectPrototype(new Model\Entities\Jurado());
                     return new TableGateway('view_jurado', $dbAdapter, null, $resultSetPrototype);
                 },
+
+                Model\TramiteTable::class => function($container) {
+                    $tableGateway = $container->get(Model\TramiteTableGateway::class);
+                    return new Model\TramiteTable($tableGateway);
+                },
+                Model\TramiteTableGateway::class => function ($container) {
+                    $dbAdapter = $container->get(AdapterInterface::class);
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\Entities\Tramite());
+                    return new TableGateway('tramite', $dbAdapter, null, $resultSetPrototype);
+                },
             ],
         ];
 
@@ -130,6 +141,12 @@ class Module implements ConfigProviderInterface
                 Controller\JuradoController::class => function($container){
                     return new Controller\JuradoController(
                       $container->get(Model\JuradoTable::class),
+                        $container->get(Model\PaginaTable::class)
+                    );
+                },
+                Controller\TramiteController::class => function($container){
+                    return new Controller\TramiteController(
+                        $container->get(Model\TramiteTable::class),
                         $container->get(Model\PaginaTable::class)
                     );
                 }

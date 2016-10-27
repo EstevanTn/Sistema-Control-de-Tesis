@@ -25,7 +25,7 @@
                         <div class="control-group">
                             <label class="control-label">CÓDIGO</label>
                             <div class="controls">
-                                <input class="form-control" type="text" name="codigo">
+                                <input readonly class="form-control" type="text" name="codigo">
                                 <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('estudiante', ['action'=>'buscar'])?>" data-icon="icon-search" data-title="Buscar Estudiante" class="btn btn-default" type="button"><i class="icon-search"></i></button>
                             </div>
                         </div>
@@ -63,8 +63,8 @@
                             <label class="control-label">N° TRAMITE</label>
                             <div class="controls">
                                 <div class="input-prepend input-append">
-                                    <input type="text" class="form-control" NAME="tramite" />
-                                    <button class="btn btn-default" type="button"><i class="icon-search"></i></button>
+                                    <input readonly type="text" class="form-control" NAME="tramite" />
+                                    <button id="btn-buscar-tramite" data-role="modal-async" data-href="<?$this->basePath()?>" data-title="Tramites" data-icon="icon-list-th" class="btn btn-default" type="button"><i class="icon-search"></i></button>
                                 </div>
                             </div>
                         </div>
