@@ -26,9 +26,30 @@ class TramiteController extends AbstractActionController
         $this->table = $table;
         $this->paginas = $paginas;
     }
-    
-    public function tram_alumnoAction(){
+
+    public function indexAction()
+    {
         if(AuthSession::Session()){
+            $this->layout()->title = 'Lista de Tramites';
+            $this->layout()->navbar = $this->paginas->getAuthPages();
+            return new ViewModel();
+        }else{
+            $this->redirect()->toRoute('auth');
+        }
+    }
+
+    public function tramitealumnoAction(){
+        if(AuthSession::Session()){
+            $this->layout('layout/modal');
+            return new ViewModel();
+        }else{
+            $this->redirect()->toRoute('auth');
+        }
+    }
+    
+    public function nuevoAction(){
+        if(AuthSession::Session()){
+            $this->layout('layout/modal');
             return new ViewModel();
         }else{
             $this->redirect()->toRoute('auth');

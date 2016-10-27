@@ -64,14 +64,17 @@
                             <div class="controls">
                                 <div class="input-prepend input-append">
                                     <input readonly type="text" class="form-control" NAME="tramite" />
-                                    <button id="btn-buscar-tramite" data-role="modal-async" data-href="<?$this->basePath()?>" data-title="Tramites" data-icon="icon-list-th" class="btn btn-default" type="button"><i class="icon-search"></i></button>
+                                    <div class="btn-group">
+                                        <button id="btn-buscar-tramite" data-role="modal-async" data-href="<?=$this->url('tramite', ['action'=>'tramitealumno'])?>" data-title="Tramites" data-icon="icon-list-th" class="btn btn-default" type="button"><i class="icon-search"></i></button>
+                                        <button data-role="modal-async" data-href="<?=$this->url('tramite', ['action'=>'nuevo'])?>" data-title="Nuevo Tramite" data-icon="icon-plus" class="btn btn-success" type="button"><i class="icon-plus"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane center" id="esquema">
-                    <div class="span8">
+                    <div class="span11">
                         <div class="control-group">
                             <label class="control-label">Titulo de Tesis</label>
                             <div class="controls">
@@ -103,10 +106,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="span4">
+                    <div class="span11">
                         <div class="btn-group">
                             <a href="#estudiante" data-toggle="tab" class="btn btn-info"><i class="icon-arrow-left"></i> Atras</a>
-                            <button class="btn btn-success"><i class="icon-saved"></i> GUARDAR</button>
+                            <button class="btn btn-success"><i class="icon-save"></i> GUARDAR</button>
                         </div>
                     </div>
                 </div>
