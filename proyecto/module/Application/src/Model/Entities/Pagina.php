@@ -23,14 +23,14 @@ class Pagina
 
     public function exchangeArray($data)
     {
-        $this->id = !empty($data['pag_id'])?$data['pag_id']:$data['pag_id'];
-        $this->nombre = !empty($data['pag_nombre'])?$data['pag_nombre']:$data['pag_nombre'];
-        $this->icono = !empty($data['pag_icono'])?$data['pag_icono']:$data['pag_icono'];
-        $this->url = !empty($data['pag_url'])?$data['pag_url']:$data['pag_url'];
-        $this->padre = !empty($data['pag_padre'])?$data['pag_padre']:$data['pag_padre'];
-        $this->estado = !empty($data['pag_estado'])?$data['pag_estado']:$data['pag_estado'];
-        $this->tipo_usu = !empty($data['tipo_usu_id'])?$data['tipo_usu_id']:$data['tipo_usu_id'];
-        $this->cantidad = !empty($data['pag_cantidad'])?$data['pag_cantidad']:$data['pag_cantidad'];
+        $this->id = !empty($data['pag_id'])?$data['pag_id']:0;
+        $this->nombre = !empty($data['pag_nombre'])?$data['pag_nombre']:'';
+        $this->icono = !empty($data['pag_icono'])?$data['pag_icono']:'';
+        $this->url = !empty($data['pag_url'])?$data['pag_url']:'';
+        $this->padre = !empty($data['pag_padre'])?$data['pag_padre']:0;
+        $this->estado = !empty($data['pag_estado'])?$data['pag_estado']:false;
+        $this->tipo_usu = !empty($data['tipo_usu_id'])?$data['tipo_usu_id']:0;
+        $this->cantidad = !empty($data['pag_cantidad'])?$data['pag_cantidad']:0;
     }
 
 

@@ -1,0 +1,48 @@
+<div class="row-fluid">
+    <div class="form-horizontal">
+        <div class="control-group span12">
+            <div class="input-prepend input-append">
+                <div class="add-on">BUSCAR POR:</div>
+                <select onchange="$('[name=q]').attr('placeholder', 'Ingrese '+$(this).val())" name="filtro" class="form-control" style="width: 120px">
+                    <option value="codigo">CODIGO</option>
+                    <option value="nombres">NOMBRES</option>
+                    <option value="apellidos">APELLIDOS</option>
+                </select>
+                <input type="text" name="q" class="form-control" placeholder="Ingrese codigo" >
+            </div>
+        </div>
+    </div>
+</div>
+<?= PAGINATION_HTML ?>
+<div class="row-fluid">
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>CODIGO</th>
+				<th>DNI</th>
+				<th>NOMBRES</th>
+				<th>APELLIDOS</th>
+                <th>DIRECCION</th>
+                <th>TELEFONO</th>
+                <th>FECHA NAC.</th>
+			</tr>
+		</thead>
+        <tbody id="modalBuscarEstudiante">
+            <?php foreach ($estudiantes as $key => $item):?>
+                <tr data-item="<?=$item->codigo?>">
+                    <td><?=$item->codigo?></td>
+                    <td><?=$item->dni?></td>
+                    <td><?=$item->nombres?></td>
+                    <td><?=$item->apePaterno.' '.$item->apeMaterno?></td>
+                    <td><?=$item->direccion?></td>
+                    <td><?=$item->telefono?></td>
+                    <td><?=$item->fecha_nac?></td>
+                    <td>
+                        <button data-role="close-modal" data-action="Estudiante.elegir('<?=$item->codigo?>')" class="btn btn-success" ><i class="icon-ok-circle"></i></button>
+                    </td>
+                </tr>
+            <?php endforeach;?>
+        </tbody>
+	</table>
+</div>
+

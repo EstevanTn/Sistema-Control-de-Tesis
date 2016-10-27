@@ -835,6 +835,20 @@ ul.messages li .message {
 	overflow: hidden;
 }
 
+.box-header-tabs {
+	height: 26px;
+	font-size: 16px;
+	line-height: 16px;
+	padding: 10px;
+	background: #eee;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	overflow: hidden;
+}
+
+
+
 .box-header h2{
 	float:left;
 	margin-top: 0px;
@@ -2978,3 +2992,7 @@ ul.messagesList li span.date {
 	}
     
 }
+
+
+
+

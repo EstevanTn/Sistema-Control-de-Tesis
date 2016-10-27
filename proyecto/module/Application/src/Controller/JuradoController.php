@@ -1,38 +1,41 @@
 <?php
 /**
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * Created by PhpStorm.
+ * User: tnqsoft
+ * Date: 27/10/16
+ * Time: 06:29 AM
  */
 
 namespace Application\Controller;
 
+
 use Application\Model\AuthSession;
+use Application\Model\JuradoTable;
 use Application\Model\PaginaTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class IndexController extends AbstractActionController
+class JuradoController extends AbstractActionController
 {
 
+    public $table;
     public $paginas;
 
-    public function __construct(PaginaTable $paginas)
+    public function __construct(JuradoTable $table, PaginaTable $paginas)
     {
+        $this->table = $table;
         $this->paginas = $paginas;
     }
-
+    
     public function indexAction()
     {
         if(AuthSession::Session()){
-            $this->layout()->title = 'Intranet Control Tesis';
+            $this->layout()->title = 'Lista de Jurados';
             $this->layout()->navbar = $this->paginas->getAuthPages();
             return new ViewModel();
-        }else {
+        }else{
             $this->redirect()->toRoute('auth');
         }
     }
 
-
-    
 }

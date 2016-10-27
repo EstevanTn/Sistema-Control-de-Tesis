@@ -25,6 +25,17 @@ class Module implements ConfigProviderInterface
     {
         return [
             'factories' => [
+                Model\PaginaTable::class => function($container) {
+                    $tableGateway = $container->get(Model\PaginaTableGateway::class);
+                    return new Model\PaginaTable($tableGateway);
+                },
+                Model\PaginaTableGateway::class => function ($container) {
+                    $dbAdapter = $container->get(AdapterInterface::class);
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\Entities\Pagina());
+                    return new TableGateway('pagina', $dbAdapter, null, $resultSetPrototype);
+                },
+
                 Model\UsuarioTable::class => function($container) {
                     $tableGateway = $container->get(Model\UsuarioTableGateway::class);
                     return new Model\UsuarioTable($tableGateway);
@@ -46,17 +57,47 @@ class Module implements ConfigProviderInterface
                     $resultSetPrototype->setArrayObjectPrototype(new Model\Entities\Esquema());
                     return new TableGateway('view_esquema', $dbAdapter, null, $resultSetPrototype);
                 },
+
+                Model\EstudianteTable::class => function($container) {
+                    $tableGateway = $container->get(Model\EstudianteTableGateway::class);
+                    return new Model\EstudianteTable($tableGateway);
+                },
+                Model\EstudianteTableGateway::class => function ($container) {
+                    $dbAdapter = $container->get(AdapterInterface::class);
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\Entities\Estudiante());
+                    return new TableGateway('view_estudiante', $dbAdapter, null, $resultSetPrototype);
+                },
+
+                Model\JuradoTable::class => function($container) {
+                    $tableGateway = $container->get(Model\JuradoTableGateway::class);
+                    return new Model\JuradoTable($tableGateway);
+                },
+                Model\JuradoTableGateway::class => function ($container) {
+                    $dbAdapter = $container->get(AdapterInterface::class);
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\Entities\Jurado());
+                    return new TableGateway('view_jurado', $dbAdapter, null, $resultSetPrototype);
+                },
             ],
         ];
+
+
     }
 
     public function getControllerConfig()
     {
         return [
             'factories' => [
+                Controller\IndexController::class => function($container){
+                  return new Controller\IndexController(
+                      $container->get(Model\PaginaTable::class)
+                  );
+                },
                 Controller\UsuarioController::class => function($container) {
                     return new Controller\UsuarioController(
-                        $container->get(Model\UsuarioTable::class)
+                        $container->get(Model\UsuarioTable::class),
+                        $container->get(Model\PaginaTable::class)
                     );
                 },
                 Controller\AuthController::class => function($container) {
@@ -66,9 +107,32 @@ class Module implements ConfigProviderInterface
                 },
                 Controller\EsquemaController::class => function($container) {
                     return new Controller\EsquemaController(
-                        $container->get(Model\EsquemaTable::class)
+                        $container->get(Model\EsquemaTable::class),
+                        $container->get(Model\PaginaTable::class)
                     );
                 },
+                Controller\AsesorController::class => function($container){
+                    return new Controller\AsesorController(
+                        $container->get(Model\PaginaTable::class)
+                    );
+                },
+                Controller\ProgramacionController::class => function($container){
+                    return new Controller\ProgramacionController(
+                        $container->get(Model\PaginaTable::class)
+                    );
+                },
+                Controller\EstudianteController::class => function($container){
+                    return new Controller\EstudianteController(
+                        $container->get(Model\EstudianteTable::class),
+                        $container->get(Model\PaginaTable::class)
+                    );
+                },
+                Controller\JuradoController::class => function($container){
+                    return new Controller\JuradoController(
+                      $container->get(Model\JuradoTable::class),
+                        $container->get(Model\PaginaTable::class)
+                    );
+                }
             ],
         ];
     }

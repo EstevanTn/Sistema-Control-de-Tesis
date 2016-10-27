@@ -13,7 +13,7 @@
         <!-- Le styles -->
         <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])?>
 
-        <link id="bootstrap-style" href="<?=$this->basePath('css/bootstrap.min.css')?>" rel="stylesheet">
+        <link id="bootstrap-style" href="<?=$this->basePath('css/bootstrap.css')?>" rel="stylesheet">
         <link href="<?=$this->basePath('css/bootstrap-responsive.min.css')?>" rel="stylesheet">
         <link id="base-style" href="<?=$this->basePath('css/style.css')?>" rel="stylesheet">
         <link id="base-style-responsive" href="<?=$this->basePath('css/style-responsive.css')?>" rel="stylesheet">
@@ -71,12 +71,29 @@
                 <div id="sidebar-left" class="span2">
                     <div class="nav-collapse sidebar-nav">
                         <ul class="nav nav-tabs nav-stacked main-menu">
-                            <li><a href="<?=$this->url('esquema')?>"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Esquemas</span></a></li>
-                            <li><a href="<?=$this->url('asesor')?>"><i class="icon-user"></i><span class="hidden-tablet"> Asesores</span></a></li>
-                            <li><a href="#"><i class="icon-legal"></i><span class="hidden-tablet"> Jurado</span></a></li>
-                            <li><a href="#"><i class="icon-book"></i><span class="hidden-tablet"> Tesis</span></a></li>
-                            <li><a href="<?=$this->url('programacion')?>"><i class="icon-calendar"></i><span class="hidden-tablet"> Programación</span></a></li>
-                            <li><a href="<?=$this->url('usuario')?>"><i class="icon-group"></i><span class="hidden-tablet"> Usuarios</span></a></li>
+                            <?php if (isset($this->navbar)):?>
+                                <?php foreach ($this->navbar as $item): ?>
+                                    <li><a class="<?=$item['list']!==null?'dropmenu':''?>" href="<?=$this->basePath($item['item']->url)?>"><i class="<?=$item['item']->icono?>"></i>
+                                            <span class="hidden-tablet"> <?=$item['item']->nombre?></span>
+                                            <?php if($item['item']->cantidad>0):?>
+                                                <span class="label label-important"><?=$item['item']->cantidad?></span>
+                                            <?php endif;?>
+                                        </a>
+                                        <?php if($item['item']->cantidad>0 and $item['list']!==null):?>
+                                            <ul>
+                                                <?php foreach ($item['list'] as $key => $itemList):?>
+                                                    <li>
+                                                        <a class="submenu" href="<?=$this->basePath($itemList->url)?>">
+                                                            <i class="<?=$itemList->icono?>"></i>
+                                                            <span class="hidden-tablet"> <?=$itemList->nombre?></span>
+                                                        </a>
+                                                    </li>
+                                                <?php endforeach;?>
+                                            </ul>
+                                        <?php endif;?>
+                                    </li>
+                                <?php endforeach;?>
+                            <?php endif;?>
                         </ul>
                     </div>
                 </div>

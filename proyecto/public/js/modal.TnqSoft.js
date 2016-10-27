@@ -115,8 +115,19 @@
                 setTimeout(function(){
                     init();
                 });
+                selectOptionClose(instance);
             }
         });
+    }
+    
+    function selectOptionClose(instance){
+        TNQSOFT.each('[data-role="close-modal"]', function (e,i) {
+            e.addEventListener('click', function () {
+                var action = e.getAttribute('data-action');
+                eval(action);
+                instance._hidden();
+            })
+        });        
     }
     
     modalInstance.prototype._visible = function _visible(){

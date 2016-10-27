@@ -7,14 +7,24 @@
 
 namespace Application\Controller;
 
+use Application\Model\PaginaTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class ProgramacionController extends AbstractActionController
 {
+
+    public $paginas;
+
+    public function __construct(PaginaTable $paginas)
+    {
+        $this->paginas = $paginas;
+    }
+
     public function indexAction()
     {
         $this->layout()->title = 'Lista de Programaciones';
+        $this->layout()->navbar = $this->paginas->getAuthPages();
         return new ViewModel();
     }
 

@@ -25,7 +25,7 @@ class UsuarioTable
         $data = null;
         return[
           'sessionAuth' => count($resultSet)==1?true:false,
-            'data'  =>  $resultSet
+            'resultSet'  =>  $resultSet
         ];
     }
 

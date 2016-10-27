@@ -9,7 +9,6 @@ namespace Application;
 
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -58,6 +57,20 @@ return [
                     ],
                 ],
             ],
+            'estudiante' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/estudiante[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => Controller\EstudianteController::class,
+                        'action'     => 'index',
+                        'constraints'   =>  [
+                            'action'    =>  '[a-z]+',
+                            'id' => '[0-9]+'
+                        ]
+                    ],
+                ],
+            ],
             'asesor' => [
                 'type'    => Segment::class,
                 'options' => [
@@ -92,13 +105,25 @@ return [
                     ],
                 ],
             ],
+            'jurado' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/jurado[/:action[/:id]]',
+                    'defaults' => [
+                        'controller' => Controller\JuradoController::class,
+                        'action'     => 'index',
+                        'constraints'   =>  [
+                            'action'    =>  '[a-z]+',
+                            'id' => '[0-9]+'
+                        ]
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => InvokableFactory::class,
-            Controller\AsesorController::class => InvokableFactory::class,
-            Controller\ProgramacionController::class => InvokableFactory::class,
+            
         ],
     ],
     'view_manager' => [

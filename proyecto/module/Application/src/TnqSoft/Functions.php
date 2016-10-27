@@ -11,7 +11,7 @@ namespace Application\TnqSoft;
 class Functions
 {
 
-    public static function createPagination($table,$limit=10){
+    public static function createPagination($table,$id='pagination', $limit=10){
         $total = count($table->select());
         $start = $total;
         $pages = ceil($total/$limit);
@@ -24,7 +24,7 @@ class Functions
                 $start = $total-(($page*$limit)-$limit);
             }
         }
-        $html = '<select class="form-control" id="pagination" >';
+        $html = '<select class="form-control" id="'.$id.'" >';
         for($i=1;$i<=$pages;$i++){
             $html .= '<option value="'.$i.'">Pág. '.$i.'</option>';
         }
