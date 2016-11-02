@@ -10,7 +10,7 @@
  * control, so do not include passwords or other sensitive information in this
  * file.
  */
-//error_reporting(0);
+error_reporting(0);
 session_start();
 define('SESSION_NAME', 'TnqSoftSession');
 define('COOKIE_NAME', 'TnqSoftCookie');
