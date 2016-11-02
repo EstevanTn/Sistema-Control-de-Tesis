@@ -1,36 +1,33 @@
 <div class="row-fluid">
-    <div class="box span12">
+    <table id="tbEstudiantes" class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th>CODIGO</th>
+            <th>DNI</th>
+            <th>NOMBRES Y APELLIDOS</th>
+            <th>OPCIONES</th>
+        </tr>
+        </thead>
+        <tbody>
 
-    </div>
-    <div class="box-content">
-        <table id="tbEstudiantes" class="table table-bordered table-hover table-striped">
-            <thead>
-                <tr>
-                    <th>CODIGO</th>
-                    <th>DNI</th>
-                    <th>NOMBRES Y APELLIDOS</th>
-                    <th>OPCIONES</th>
-                </tr>
-            </thead>
-            <tbody>
+        <?php foreach ($estudiantes as $item):?>
 
-            <?php foreach ($estudiantes as $item):?>
+            <tr>
+                <td><?=$this->escapeHtml($item['est_codigo'])?></td>
+                <td><?=$this->escapeHtml($item['per_dni'])?></td>
+                <td><?=$this->escapeHtml($item['per_nombre'].' '.$item['per_ape_pat'].' '.$item['per_ape_mat'])?></td>
+                <td>
+                    <button data-role="close-modal" data-action="Estudiante.elegir('<?=$item['est_codigo']?>','<?=$item['per_dni']?>', '<?=$item['per_nombre']?>','<?=$item['per_ape_pat']." ".$item['per_ape_mat']?>', '<?=$item['per_direccion']?>','<?=$item['per_fecha_nac']?>')" class="btn btn-primary"><i class="icon-check"></i></button>
+                </td>
+            </tr>
 
-                <tr>
-                    <td><?=$this->escapeHtml($item['est_codigo'])?></td>
-                    <td><?=$this->escapeHtml($item['per_dni'])?></td>
-                    <td><?=$this->escapeHtml($item['per_nombre'].' '.$item['per_ape_pat'].' '.$item['per_ape_mat'])?></td>
-                    <td>
-                        <button data-role="close-modal" data-action="Estudiante.elegir('<?=$item['est_codigo']?>','<?=$item['per_dni']?>', '<?=$item['per_nombre']?>','<?=$item['per_ape_pat']." ".$item['per_ape_mat']?>', '<?=$item['per_direccion']?>','<?=$item['per_fecha_nac']?>')" class="btn btn-primary"><i class="icon-check"></i></button>
-                    </td>
-                </tr>
+        <?php endforeach;?>
 
-            <?php endforeach;?>
-
-            </tbody>
-        </table>
-    </div>
+        </tbody>
+    </table>
 </div>
 <script>
-    $('#tbEstudiantes').dataTable();
+    $(document).ready(function () {
+        $('#tbEstudiantes').dataTable();
+    });
 </script>
