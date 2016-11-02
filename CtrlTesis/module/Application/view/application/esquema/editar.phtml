@@ -1,0 +1,116 @@
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-bar-chart"></i>
+        <a href="<?=$this->url('esquema')?>">Esquemas</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="#" class="disabled">Editar</a>
+    </li>
+</ul>
+<div class="tab-content clearfix">
+    <div class="form-horizontal">
+        <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#estudiante" data-toggle="tab"> DATOS DE ESTUDIANTE</a></li>
+            <li><a href="#esquema" data-toggle="tab"> DATOS DE ESQUEMA</a></li>
+        </ul>
+        <form class="tab-content clearfix" method="post">
+            <div class="tab-pane active" id="estudiante">
+                <div class="span9">
+                    <div class="control-group">
+                        <label class="control-label">Código</label>
+                        <div class="controls">
+                            <input class="form-control" type="text" name="codigo">
+                            <button class="btn btn-default" type="button"><i class="icon-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">DNI</label>
+                        <div class="controls">
+                            <input class="form-control" type="text" name="dni" readonly>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Nombres</label>
+                        <div class="controls">
+                            <input type="text" class="form-control size-y" name="nombres" readonly>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Ap. Paterno</label>
+                        <div class="controls">
+                            <input type="text" class="form-control size-y" name="ape_pat" readonly>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Ap. Materno</label>
+                        <div class="controls">
+                            <input type="text" class="form-control size-y" name="ape_mat" readonly>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Fecha Nac.</label>
+                        <div class="controls">
+                            <input type="date" class="form-control" readonly />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">N° Tramite</label>
+                        <div class="controls">
+                            <div class="input-prepend input-append">
+                                <input type="text" class="form-control" />
+                                <button class="btn btn-default" type="button"><i class="icon-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group pull-right">
+                        <a class="btn btn-info" data-toggle="tab" href="#esquema">Siguiente <i class="icon-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane center" id="esquema">
+                <div class="span7">
+                    <div class="control-group">
+                        <label class="control-label">Titulo de Tesis</label>
+                        <div class="controls">
+                            <input type="text" class="form-control size-y" placeholder="Ingrese titulo de tesis" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Palabras clave</label>
+                        <div class="controls">
+                            <textarea class="form-control size-y"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Objetivos Principales</label>
+                        <div class="controls">
+                            <textarea class="cleditor size-y"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Objetivos Secundarios</label>
+                        <div class="controls">
+                            <textarea class="cleditor size-y"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">EStado</label>
+                        <div class="controls">
+                            <input type="text" readonly class="form-control size-y" value="PRESENTADO" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <button class="btn btn-success"><i class="icon-saved"></i> GUARDAR</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $('#myTab a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+</script>

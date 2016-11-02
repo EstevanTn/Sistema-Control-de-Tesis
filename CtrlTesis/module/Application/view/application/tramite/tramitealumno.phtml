@@ -1,0 +1,44 @@
+<?php if($estado==true){?>
+    <div class="row-fluid">
+        <div class="span11">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>N° PAGO</th>
+                    <th>FECHA</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($lista as $key => $item):?>
+                        <tr>
+                            <td><?=$item->tram_id?></td>
+                            <td><?=$item->pag_codigo?></td>
+                            <td><?=$item->tram_fecha_reg?></td>
+                            <td><button data-role="close-modal" data-action="Estudiante.nroTramite(<?=$item->tram_id?>)" class="btn btn-success"><i class="icon-ok-circle"></i></button></td>
+                        </tr>
+                    <?php endforeach;?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php }else{?>
+    <form method="post" id="frmbuscarTramite" onsubmit="javascript: void(0);" class="row-fluid form-horizontal"  action="<?=$this->url('tramite', ['action'=>'tramitealumno'])?>">
+        <div class="span11">
+            <div class="control-group">
+                <label class="control-label">CODIGO ESTUDIANTE</label>
+                <div class="controls">
+                    <input name="codigo" type="text" class="form-control" >
+                    <div class="btn-group">
+                        <button type="button" onclick="Estudiante.loadInfo()" class="btn btn-success"><i class="icon-ok"></i></button>
+                        <button onclick="Global.HttpRequest('#frmbuscarTramite')" class="btn btn-info"><i class="icon-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+<?php }?>
+
+<script>
+    
+</script>

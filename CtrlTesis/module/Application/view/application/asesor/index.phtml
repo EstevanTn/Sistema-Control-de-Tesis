@@ -1,0 +1,40 @@
+<div class="page-header">
+    <h3>Asesores</h3>
+</div>
+<div class="row-fluid">
+    <div class="control-group">
+        <div class="btn-group">
+            <a href="<?= $this->url('asesor',array('action'=>'nuevo'))?>" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> NUEVO</a>
+            <a href="#" class="btn btn-warning"><i class="glyphicon glyphicon-th"></i> GENERAR REPORTE</a>
+        </div>
+    </div>
+</div>
+<div class="form-horizontal">
+    <div class="control-group">
+        <form class="span7">
+            <div class="input-prepend input-append">
+                <div class="add-on">Nombre de Asesor</div>
+                <input type="text" name="q" class="form-control"/>
+                <button class="btn btn-default"><i class="icon-search"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row-fluid panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">Resultados</h4>
+    </div>
+    <table class="panel-body table table-bordered table-hover">
+        <thead>
+        <th>#</th>
+        <th>CÓDIGO</th>
+        <th>APELLIDOS</th>
+        <th>NOMBRES</th>
+        <th>ASESORADOS</th>
+        <th></th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
