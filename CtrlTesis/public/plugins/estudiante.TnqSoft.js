@@ -1,18 +1,18 @@
 var Estudiante = (function () {
     var instance;
     return{
-        elegir: function (key) {
-            var row = document.querySelectorAll('tr[data-item="'+key+'"]')[0];
-            var items = row.children;
+        elegir: function (codigo, dni, nombres, apellidos, direccion, fecha) {
             instance = {
-                codigo: items[0].innerHTML,
-                dni: items[1].innerHTML,
-                nombres: items[2].innerHTML,
-                apellidos: items[3].innerHTML,
-                direccion: items[4].innerHTML,
-                fecha_nac: items[6].innerHTML
+                codigo: codigo,
+                dni: dni,
+                nombres: nombres,
+                apellidos: apellidos,
+                direccion: direccion,
+                fecha_nac: fecha
             };
+            console.log(instance);
             this.loadInfo();
+
         },
         instance: instance,
         loadInfo: function () {
