@@ -48,4 +48,16 @@ class AsesorController extends AbstractActionController
             $this->redirect()->toRoute('auth');
         }
     }
+
+    public function nuevoAction(){
+        $this->dbAdapter = $this->getPluginManager()->getServiceLocator()->get(Adapter::class);
+        if(AuthSession::AuthSession($this->dbAdapter)){
+            $model = new ModelAsesor($this->dbAdapter);
+            $this->layout()->title = 'Nuevo Asesor';
+            $this->layout()->navbar = AuthSession::getAuthPages($this->dbAdapter);
+            return new ViewModel($model->insert());
+        }else{
+            $this->redirect()->toRoute('auth');
+        }
+    }
 }
