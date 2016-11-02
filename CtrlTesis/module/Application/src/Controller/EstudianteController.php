@@ -10,6 +10,7 @@ namespace Application\Controller;
 
 
 use Application\Model\AuthSession;
+use Application\Model\ModelEstudiante;
 use Zend\Db\Adapter\Adapter;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -34,8 +35,11 @@ class EstudianteController extends AbstractActionController
     public function mbuscarAction(){
         $this->dbAdapter = $this->getPluginManager()->getServiceLocator()->get(Adapter::class);
         if(AuthSession::AuthSession($this->dbAdapter)){
+            $model = new ModelEstudiante($this->dbAdapter);
             $this->layout('layout/blank');
-            return new ViewModel();
+            return new ViewModel([
+                'estudiantes' => $model->fetchAll(),
+            ]);
         }else{
             $this->redirect()->toRoute('auth');
         }

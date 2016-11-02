@@ -26,4 +26,6 @@ interface InterfaceModel
     
     public function get($id);
     
+    public function search(array $data);
+    
 }

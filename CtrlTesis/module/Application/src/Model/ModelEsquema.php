@@ -57,5 +57,9 @@ class ModelEsquema implements InterfaceModel
         }
         return $row;
     }
-    
+
+    public function search(array $data)
+    {
+        // TODO: Implement search() method.
+    }
 }
