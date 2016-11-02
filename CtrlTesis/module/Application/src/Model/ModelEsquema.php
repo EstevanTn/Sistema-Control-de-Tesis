@@ -32,8 +32,17 @@ class ModelEsquema implements InterfaceModel
     }
     
     public function insert(){
-        
-        
+        $response = array();
+        $response['post'] = false;
+        if(isset($_POST['submit'])){
+            $response['post'] = true;
+            $codigo = $_POST['codigo'];
+            $sql = sprintf("CALL pa_InsertEsquema()");
+            $statement = $this->dbAdapter->query($sql);
+            $result = $statement->execute();
+
+        }
+        return $response;
     }
 
     public function delete($id)

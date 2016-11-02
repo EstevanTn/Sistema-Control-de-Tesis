@@ -15,6 +15,7 @@ var Estudiante = (function () {
         },
         instance: instance,
         loadInfo: function () {
+            $('#btn-buscar-tramite').attr('data-href', $('#btn-buscar-tramite').attr('data-base')+'/tramite/tramiteestudiante/'+instance.codigo);
             $('[name=codigo]').val(instance.codigo);
             $('[name=dni]').val(instance.dni);
             $('[name=nombres]').val(instance.nombres);
@@ -23,7 +24,6 @@ var Estudiante = (function () {
             $('[name=fecha_nac]').val(instance.fecha_nac);
         },
         nroTramite: function (key) {
-            console.log(key);
             $('[name=tramite]').val(key);
         }
     }
