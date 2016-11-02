@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 19, 2016 at 08:28 PM
+-- Generation Time: Oct 27, 2016 at 10:08 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.5.37
 
@@ -38,7 +38,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `pa_insertar_usuario` (IN `nom_usu` 
     END$$
 
 --
--- FileExplorer
+-- Functions
 --
 DROP FUNCTION IF EXISTS `func_rank`$$
 CREATE DEFINER=`root`@`localhost` FUNCTION `func_rank` () RETURNS INT(11) NO SQL
@@ -303,6 +303,37 @@ CREATE TABLE `observacion` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pagina`
+--
+
+DROP TABLE IF EXISTS `pagina`;
+CREATE TABLE `pagina` (
+  `pag_id` bigint(20) NOT NULL,
+  `pag_nombre` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `pag_icono` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `pag_url` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `pag_padre` int(11) DEFAULT NULL,
+  `pag_cantidad` int(11) NOT NULL DEFAULT '0',
+  `pag_estado` tinyint(1) NOT NULL,
+  `tipo_usu_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `pagina`
+--
+
+INSERT INTO `pagina` (`pag_id`, `pag_nombre`, `pag_icono`, `pag_url`, `pag_padre`, `pag_cantidad`, `pag_estado`, `tipo_usu_id`) VALUES
+(1, 'ESQUEMAS', 'icon-bar-chart', 'esquema', NULL, 0, 1, 1),
+(2, 'ASESOR', 'icon-user', 'asesor', NULL, 0, 1, 1),
+(3, 'JURADO', 'icon-legal', 'jurado', NULL, 0, 1, 1),
+(4, 'TESIS', 'icon-book', 'tesis', NULL, 0, 1, 1),
+(5, 'PROGRAMACIÓN', 'icon-calendar', 'programacion', NULL, 0, 1, 1),
+(6, 'USUARIO', 'icon-group', 'usuario', NULL, 0, 1, 1),
+(7, 'NUEVO ESQUEMA', 'icon-plus', 'esquema/nuevo', 1, 0, 0, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `persona`
 --
 
@@ -545,7 +576,8 @@ CREATE TABLE `view_esquema` (
 --
 DROP VIEW IF EXISTS `view_estudiante`;
 CREATE TABLE `view_estudiante` (
-`est_codigo` char(10)
+`fila` int(11)
+,`est_codigo` char(10)
 ,`est_estado` bit(1)
 ,`est_fecha_reg` timestamp
 ,`per_id` bigint(20)
@@ -599,7 +631,7 @@ CREATE TABLE `view_usuario` (
 ,`tipo_usu_id` bigint(20)
 ,`usu_estado` varchar(11)
 ,`tipo_usu_nombre` varchar(50)
-,`nombres` varchar(151)
+,`nombres` varchar(152)
 );
 
 -- --------------------------------------------------------
@@ -627,7 +659,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_estudiante`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_estudiante`  AS  (select `estudiante`.`est_codigo` AS `est_codigo`,`estudiante`.`est_estado` AS `est_estado`,`estudiante`.`fecha_reg` AS `est_fecha_reg`,`persona`.`per_id` AS `per_id`,`persona`.`per_dni` AS `per_dni`,`persona`.`per_nombre` AS `per_nombre`,`persona`.`per_ape_pat` AS `per_ape_pat`,`persona`.`per_ape_mat` AS `per_ape_mat`,`persona`.`per_direccion` AS `per_direccion`,`persona`.`per_telefono` AS `per_telefono`,`persona`.`per_email` AS `per_email`,`persona`.`per_fecha_nac` AS `per_fecha_nac`,`persona`.`per_fecha_reg` AS `per_fecha_reg` from (`persona` join `estudiante` on((`persona`.`per_id` = `estudiante`.`per_id`)))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_estudiante`  AS  (select `func_rank`() AS `fila`,`estudiante`.`est_codigo` AS `est_codigo`,`estudiante`.`est_estado` AS `est_estado`,`estudiante`.`fecha_reg` AS `est_fecha_reg`,`persona`.`per_id` AS `per_id`,`persona`.`per_dni` AS `per_dni`,`persona`.`per_nombre` AS `per_nombre`,`persona`.`per_ape_pat` AS `per_ape_pat`,`persona`.`per_ape_mat` AS `per_ape_mat`,`persona`.`per_direccion` AS `per_direccion`,`persona`.`per_telefono` AS `per_telefono`,`persona`.`per_email` AS `per_email`,`persona`.`per_fecha_nac` AS `per_fecha_nac`,`persona`.`per_fecha_reg` AS `per_fecha_reg` from (`persona` join `estudiante` on((`persona`.`per_id` = `estudiante`.`per_id`)))) ;
 
 -- --------------------------------------------------------
 
@@ -645,7 +677,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_usuario`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_usuario`  AS  select (select `func_rank`()) AS `rank`,`usuario`.`usu_id` AS `usu_id`,`usuario`.`usu_login` AS `usu_login`,`usuario`.`usu_password` AS `usu_password`,`usuario`.`per_id` AS `per_id`,`usuario`.`tipo_usu_id` AS `tipo_usu_id`,if((`usuario`.`usu_estado` = 'A'),'ACTIVO',if((`usuario`.`usu_estado` = 'B'),'BLOQUEADO','DESACTIVADO')) AS `usu_estado`,`tipo_usuario`.`tipo_usu_nombre` AS `tipo_usu_nombre`,concat(`persona`.`per_nombre`,' ',`persona`.`per_ape_pat`,`persona`.`per_ape_mat`) AS `nombres` from ((`usuario` join `persona` on((`persona`.`per_id` = `usuario`.`per_id`))) join `tipo_usuario` on((`tipo_usuario`.`tipo_usu_id` = `usuario`.`tipo_usu_id`))) order by `usuario`.`usu_id` desc ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_usuario`  AS  select (select `func_rank`()) AS `rank`,`usuario`.`usu_id` AS `usu_id`,`usuario`.`usu_login` AS `usu_login`,`usuario`.`usu_password` AS `usu_password`,`usuario`.`per_id` AS `per_id`,`usuario`.`tipo_usu_id` AS `tipo_usu_id`,if((`usuario`.`usu_estado` = 'A'),'ACTIVO',if((`usuario`.`usu_estado` = 'B'),'BLOQUEADO','DESACTIVADO')) AS `usu_estado`,`tipo_usuario`.`tipo_usu_nombre` AS `tipo_usu_nombre`,concat(`persona`.`per_nombre`,' ',`persona`.`per_ape_pat`,' ',`persona`.`per_ape_mat`) AS `nombres` from ((`usuario` join `persona` on((`persona`.`per_id` = `usuario`.`per_id`))) join `tipo_usuario` on((`tipo_usuario`.`tipo_usu_id` = `usuario`.`tipo_usu_id`))) order by `usuario`.`usu_id` desc ;
 
 --
 -- Indexes for dumped tables
@@ -723,6 +755,12 @@ ALTER TABLE `observacion`
   ADD PRIMARY KEY (`obs_id`),
   ADD KEY `fk_observacion_jurado_id` (`jur_id`),
   ADD KEY `fk_observacion_evaluacion_id` (`eva_id`);
+
+--
+-- Indexes for table `pagina`
+--
+ALTER TABLE `pagina`
+  ADD PRIMARY KEY (`pag_id`);
 
 --
 -- Indexes for table `persona`
@@ -807,6 +845,11 @@ ALTER TABLE `jurado`
 --
 ALTER TABLE `observacion`
   MODIFY `obs_id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `pagina`
+--
+ALTER TABLE `pagina`
+  MODIFY `pag_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `persona`
 --
