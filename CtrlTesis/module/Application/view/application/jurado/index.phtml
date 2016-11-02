@@ -1,0 +1,30 @@
+<div class="row-fluid">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>NOMBRES Y APELLIDOS</th>
+                <th>CARGO</th>
+                <th>TIPO JURADO</th>
+                <th>OPCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($jurados as $item):?>
+
+                <tr>
+                    <td><?=$this->escapeHtml($item['jur_id'])?></td>
+                    <td><?=$this->escapeHtml($item['per_nombre'].' '.$item['per_ape_pat'].' '.$item['per_ape_mat'])?></td>
+                    <td><?=$this->escapeHtml($item['car_descripcion'])?></td>
+                    <td><?=$this->escapeHtml($item['tipo_jurado'])?></td>
+                    <td>
+                        <a class="btn btn-primary" href="<?=$this->url('jurado', ['action'=>'editar', 'key'=>$item['jur_id']])?>" class="btn btn-primary">
+                            <i class="icon-legal"></i>
+                        </a>
+                    </td>
+                </tr>
+
+            <?php endforeach;?>
+        </tbody>
+    </table>
+</div>
