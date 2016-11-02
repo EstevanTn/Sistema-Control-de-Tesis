@@ -20,45 +20,45 @@
                     <div class="control-group">
                         <label class="control-label">Código</label>
                         <div class="controls">
-                            <input class="form-control" type="text" name="codigo">
-                            <button class="btn btn-default" type="button"><i class="icon-search"></i></button>
+                            <input class="form-control" type="text" name="codigo" value="<?=$this->escapeHtml($esquema['est_codigo'])?>">
+                            <button data-style="modal-lg" data-role="modal-async" data-href="" data-icon="icon-search" data-title="Buscar Estudiante" class="btn btn-default" type="button"><i class="icon-search"></i></button>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">DNI</label>
                         <div class="controls">
-                            <input class="form-control" type="text" name="dni" readonly>
+                            <input class="form-control" type="text" name="dni" value="<?=$this->escapeHtml($esquema['per_dni'])?>" readonly>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">Nombres</label>
                         <div class="controls">
-                            <input type="text" class="form-control size-y" name="nombres" readonly>
+                            <input type="text" class="form-control size-y" name="nombres" value="<?=$this->escapeHtml($esquema['per_nombre'])?>" readonly>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">Ap. Paterno</label>
                         <div class="controls">
-                            <input type="text" class="form-control size-y" name="ape_pat" readonly>
+                            <input type="text" class="form-control size-y" name="ape_pat" value="<?=$this->escapeHtml($esquema['per_ape_pat'])?>" readonly>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">Ap. Materno</label>
                         <div class="controls">
-                            <input type="text" class="form-control size-y" name="ape_mat" readonly>
+                            <input type="text" class="form-control size-y"  value="<?=$this->escapeHtml($esquema['per_ape_mat'])?>" name="ape_mat" readonly>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">Fecha Nac.</label>
                         <div class="controls">
-                            <input type="date" class="form-control" readonly />
+                            <input type="date" class="form-control" name="fechaNac" readonly  value="<?=$this->escapeHtml($esquema['per_fecha_nac'])?>" />
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">N° Tramite</label>
                         <div class="controls">
                             <div class="input-prepend input-append">
-                                <input type="text" class="form-control" />
+                                <input type="text" class="form-control" name="nroTramite"  value="<?=$this->escapeHtml($esquema['tram_id'])?>" />
                                 <button class="btn btn-default" type="button"><i class="icon-search"></i></button>
                             </div>
                         </div>
@@ -73,31 +73,37 @@
                     <div class="control-group">
                         <label class="control-label">Titulo de Tesis</label>
                         <div class="controls">
-                            <input type="text" class="form-control size-y" placeholder="Ingrese titulo de tesis" />
+                            <input type="text" name="tituloTesis" value="<?=$this->escapeHtml($esquema['titulo_tesis'])?>" class="form-control size-y" placeholder="Ingrese titulo de tesis" />
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">Palabras clave</label>
                         <div class="controls">
-                            <textarea class="form-control size-y"></textarea>
+                            <textarea name="palabrasClaves" class="form-control size-y">
+                                <?=$this->escapeHtml($esquema['keyswords'])?>
+                            </textarea>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">Objetivos Principales</label>
                         <div class="controls">
-                            <textarea class="cleditor size-y"></textarea>
+                            <textarea name="objPrincipales" class="cleditor size-y">
+                                <?=$this->escapeHtml($esquema['obj_pri'])?>
+                            </textarea>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">Objetivos Secundarios</label>
                         <div class="controls">
-                            <textarea class="cleditor size-y"></textarea>
+                            <textarea name="objSecundarios" class="cleditor size-y">
+                                <?=$this->escapeHtml($esquema['obj_sec'])?>
+                            </textarea>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">EStado</label>
                         <div class="controls">
-                            <input type="text" readonly class="form-control size-y" value="PRESENTADO" />
+                            <input type="text" name="estado" readonly class="form-control size-y" value="<?=$this->escapeHtml($esquema['esq_estado'])?>" />
                         </div>
                     </div>
                     <div class="control-group">

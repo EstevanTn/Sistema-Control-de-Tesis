@@ -46,4 +46,18 @@ class EsquemaController extends AbstractActionController
         }
     }
 
+    public function editarAction(){
+        $this->dbAdapter = $this->getPluginManager()->getServiceLocator()->get(Adapter::class);
+        if(AuthSession::AuthSession($this->dbAdapter)){
+            $model = new ModelEsquema($this->dbAdapter);
+            $this->layout()->title = 'Editar Esquema';
+            $this->layout()->navbar = AuthSession::getAuthPages($this->dbAdapter);
+            return new ViewModel([
+                'esquema' => $model->get($this->params('key')),
+            ]);
+        }else{
+            $this->redirect()->toRoute('auth');
+        }
+    }
+
 }

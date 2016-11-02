@@ -3,11 +3,10 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 27, 2016 at 10:08 PM
+-- Generation Time: Nov 02, 2016 at 05:06 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.5.37
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -36,6 +35,10 @@ DROP PROCEDURE IF EXISTS `pa_insertar_usuario`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `pa_insertar_usuario` (IN `nom_usu` VARCHAR(16), IN `passw` VARCHAR(40), IN `estado` CHAR(1), IN `pers_id` BIGINT(20), IN `tipo` BIGINT(20))  BEGIN
      INSERT INTO `usuario`(`usu_login`, `usu_password`, `usu_estado`, `per_id`, `tipo_usu_id`) VALUES (nom_usu, sha1(passw), estado, pers_id, tipo);
     END$$
+
+DROP PROCEDURE IF EXISTS `pa_verificarLogin`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `pa_verificarLogin` (IN `login` VARCHAR(16), IN `pass` VARCHAR(41))  NO SQL
+SELECT * FROM view_usuario WHERE usu_login = login AND usu_password = sha1(pass) AND usu_estado='ACTIVO'$$
 
 --
 -- Functions
@@ -414,7 +417,11 @@ CREATE TABLE `seguimiento` (
 INSERT INTO `seguimiento` (`tram_id`, `seg_fecha`, `seg_descripcion`, `seg_origen`, `seg_destino`, `seg_estado`) VALUES
 (1, '2016-09-30 01:37:34', 'Se ha iniciado el tramite para presentacion de tÃ©sis.', 'Eddy Olano Leon', 'DirecciÃ³n de Escuela.', 'EN PROCESO'),
 (2, '2016-09-30 02:10:32', 'Se ha iniciado el tramite para presentacion de tÃ©sis.', 'Alfredo Carrion SaldaÃ±a', 'DirecciÃ³n de Escuela.', 'EN PROCESO'),
-(3, '2016-09-30 02:34:44', 'Se ha iniciado el tramite para presentacion de tesis.', 'Estefany Alvarado Gamboa', 'Dirección de Escuela.', 'EN PROCESO');
+(3, '2016-09-30 02:34:44', 'Se ha iniciado el tramite para presentacion de tesis.', 'Estefany Alvarado Gamboa', 'Dirección de Escuela.', 'EN PROCESO'),
+(4, '2016-10-28 00:19:21', 'Se ha iniciado el tramite para presentacion de tesis.', 'Alfredo Carrion Saldaña', 'Dirección de Escuela.', 'EN PROCESO'),
+(5, '2016-10-28 00:27:49', 'Se ha iniciado el tramite para presentacion de tesis.', 'Cristina Bobadilla Bernuy', 'Dirección de Escuela.', 'EN PROCESO'),
+(6, '2016-10-28 00:29:01', 'Se ha iniciado el tramite para presentacion de tesis.', 'Cristina Bobadilla Bernuy', 'Dirección de Escuela.', 'EN PROCESO'),
+(7, '2016-10-28 01:02:01', 'Se ha iniciado el tramite para presentacion de tesis.', 'Cristina Bobadilla Bernuy', 'Dirección de Escuela.', 'EN PROCESO');
 
 -- --------------------------------------------------------
 
@@ -462,7 +469,11 @@ CREATE TABLE `tramite` (
 INSERT INTO `tramite` (`tram_id`, `est_codigo`, `pag_codigo`, `tram_fecha_reg`) VALUES
 (1, '1111523148', 'PAG5014001', '2016-09-30 01:37:33'),
 (2, '1113658245', 'PAG1545847', '2016-09-30 02:10:31'),
-(3, '1112100975', 'PAG1523847', '2016-09-30 02:34:44');
+(3, '1112100975', 'PAG1523847', '2016-09-30 02:34:44'),
+(4, '1113658245', 'PAG7238263', '2016-10-28 00:19:21'),
+(5, '1113214567', 'PAG000001', '2016-10-28 00:27:49'),
+(6, '1113214567', 'PAG000002', '2016-10-28 00:29:01'),
+(7, '1113214567', 'PAG000003', '2016-10-28 01:02:01');
 
 --
 -- Triggers `tramite`
@@ -623,8 +634,7 @@ CREATE TABLE `view_jurado` (
 --
 DROP VIEW IF EXISTS `view_usuario`;
 CREATE TABLE `view_usuario` (
-`rank` bigint(11)
-,`usu_id` bigint(20)
+`usu_id` bigint(20)
 ,`usu_login` varchar(16)
 ,`usu_password` varchar(41)
 ,`per_id` bigint(20)
@@ -677,7 +687,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_usuario`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_usuario`  AS  select (select `func_rank`()) AS `rank`,`usuario`.`usu_id` AS `usu_id`,`usuario`.`usu_login` AS `usu_login`,`usuario`.`usu_password` AS `usu_password`,`usuario`.`per_id` AS `per_id`,`usuario`.`tipo_usu_id` AS `tipo_usu_id`,if((`usuario`.`usu_estado` = 'A'),'ACTIVO',if((`usuario`.`usu_estado` = 'B'),'BLOQUEADO','DESACTIVADO')) AS `usu_estado`,`tipo_usuario`.`tipo_usu_nombre` AS `tipo_usu_nombre`,concat(`persona`.`per_nombre`,' ',`persona`.`per_ape_pat`,' ',`persona`.`per_ape_mat`) AS `nombres` from ((`usuario` join `persona` on((`persona`.`per_id` = `usuario`.`per_id`))) join `tipo_usuario` on((`tipo_usuario`.`tipo_usu_id` = `usuario`.`tipo_usu_id`))) order by `usuario`.`usu_id` desc ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_usuario`  AS  select `usuario`.`usu_id` AS `usu_id`,`usuario`.`usu_login` AS `usu_login`,`usuario`.`usu_password` AS `usu_password`,`usuario`.`per_id` AS `per_id`,`usuario`.`tipo_usu_id` AS `tipo_usu_id`,if((`usuario`.`usu_estado` = 'A'),'ACTIVO',if((`usuario`.`usu_estado` = 'B'),'BLOQUEADO','DESACTIVADO')) AS `usu_estado`,`tipo_usuario`.`tipo_usu_nombre` AS `tipo_usu_nombre`,concat(`persona`.`per_nombre`,' ',`persona`.`per_ape_pat`,' ',`persona`.`per_ape_mat`) AS `nombres` from ((`usuario` join `persona` on((`persona`.`per_id` = `usuario`.`per_id`))) join `tipo_usuario` on((`tipo_usuario`.`tipo_usu_id` = `usuario`.`tipo_usu_id`))) order by `usuario`.`usu_id` desc ;
 
 --
 -- Indexes for dumped tables
@@ -869,7 +879,7 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT for table `tramite`
 --
 ALTER TABLE `tramite`
-  MODIFY `tram_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `tram_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
@@ -963,7 +973,6 @@ ALTER TABLE `tramite`
 ALTER TABLE `usuario`
   ADD CONSTRAINT `fk_usuario_persona` FOREIGN KEY (`per_id`) REFERENCES `persona` (`per_id`),
   ADD CONSTRAINT `fk_usuario_tipusuario` FOREIGN KEY (`tipo_usu_id`) REFERENCES `tipo_usuario` (`tipo_usu_id`);
-SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

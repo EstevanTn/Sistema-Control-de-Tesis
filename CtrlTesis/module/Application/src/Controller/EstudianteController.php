@@ -23,7 +23,18 @@ class EstudianteController extends AbstractActionController
 
         $this->dbAdapter = $this->getPluginManager()->getServiceLocator()->get(Adapter::class);
         if(AuthSession::AuthSession($this->dbAdapter)){
+            $this->layout()->title = 'Lista de Estudiantes';
             $this->layout()->navbar = AuthSession::getAuthPages($this->dbAdapter);
+            return new ViewModel();
+        }else{
+            $this->redirect()->toRoute('auth');
+        }
+    }
+
+    public function mbuscarAction(){
+        $this->dbAdapter = $this->getPluginManager()->getServiceLocator()->get(Adapter::class);
+        if(AuthSession::AuthSession($this->dbAdapter)){
+            $this->layout('layout/blank');
             return new ViewModel();
         }else{
             $this->redirect()->toRoute('auth');

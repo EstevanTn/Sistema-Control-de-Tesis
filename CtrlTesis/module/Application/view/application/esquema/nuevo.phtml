@@ -26,7 +26,7 @@
                             <label class="control-label">CÓDIGO</label>
                             <div class="controls">
                                 <input readonly class="form-control" type="text" name="codigo">
-                                <button data-style="modal-lg" data-role="modal-async" data-href="" data-icon="icon-search" data-title="Buscar Estudiante" class="btn btn-info" type="button"><i class="icon-search"></i></button>
+                                <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('estudiante', [ 'action' => 'mbuscar' ])?>" data-icon="icon-search" data-title="Buscar Estudiante" class="btn btn-info" type="button"><i class="icon-search"></i></button>
                             </div>
                         </div>
                         <div class="control-group">
@@ -118,9 +118,3 @@
     </div>
 </div>
 <script src="<?=$this->basePath('plugins/estudiante.TnqSoft.js')?>"></script>
-<script>
-    $('#myTab a').click(function (e) {
-        e.preventDefault();
-        $(this).tab('show');
-    })
-</script>

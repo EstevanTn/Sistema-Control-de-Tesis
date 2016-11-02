@@ -36,7 +36,7 @@
                 <td><?=sprintf("%s %s %s",$esq['per_nombre'], $esq['per_ape_pat'], $esq['per_ape_mat'])?></td>
                 <td><?=$esq['esq_estado']?></td>
                 <td>
-                    <a href="<?=$this->url('esquema',['action' => 'editar', 'id' => $esq['tram_id']])?>" class="btn btn-info btn-inverse"><i class="icon-edit"></i></a>
+                    <a href="<?=$this->url('esquema',['action' => 'editar', 'key' => $esq['tram_id']])?>" class="btn btn-info btn-inverse"><i class="icon-edit"></i></a>
                 </td>
             </tr>
             <?php endforeach;?>

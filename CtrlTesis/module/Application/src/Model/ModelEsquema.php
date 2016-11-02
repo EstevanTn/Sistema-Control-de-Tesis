@@ -48,7 +48,14 @@ class ModelEsquema implements InterfaceModel
 
     public function get($id)
     {
-
+        $sql = sprintf("SELECT * FROM view_esquema WHERE tram_id=%s", $id);
+        $statement = $this->dbAdapter->query($sql);
+        $results = $statement->execute();
+        $row = array();
+        foreach ($results as $r){
+            $row = $r;
+        }
+        return $row;
     }
     
 }
