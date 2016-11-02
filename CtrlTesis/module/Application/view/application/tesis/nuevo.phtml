@@ -1,0 +1,106 @@
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i>
+        <a href="<?=$this->basePath()?>">Inicio</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="<?=$this->url('tesis')?>">Tesis</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>Nueva Registro de Tesis</li>
+</ul>
+<div  class="row-fluid form-horizontal">
+    <div class="box span12">
+        <div class="box-header-tabs">
+            <ul class="nav nav-tabs" id="myTab">
+                <li><a href="#tesis" data-toggle="tab"> DATOS DE LA TESIS</a></li>
+            </ul>
+        </div>
+        <div class="box-content">
+            <form id="nuevaTesis" class="tab-content clearfix" method="post">
+                <div class="tab-pane active" id="acta">
+                    <div class="span9">
+                        <div class="control-group">
+                            <label class="control-label">CÓDIGO</label>
+                            <div class="controls">
+                                <input readonly class="form-control" type="text" name="codigo">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Estado</label>
+                            <div class="controls">
+                                <input type="text" readonly class="form-control size-y" value="APROBADO" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">CODIGO EVALUACION</label>
+                            <div class="controls">
+                                <div class="input-prepend input-append">
+                                    <input readonly type="text" class="form-control" NAME="evaluacion" />
+                                    <div class="btn-group">
+                                        <button id="btn-buscar-evaluacion" data-role="modal-async" data-href="" data-title="Evaluaciones" data-icon="icon-list" class="btn btn-info" type="button"><i class="icon-search"></i></button>
+                                        <button data-role="modal-async" data-href="" data-title="Nueva Evaluacion" data-icon="icon-plus" class="btn btn-success" type="button"><i class="icon-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Descripcion</label>
+                            <div class="controls">
+                                <input class="form-control" type="text" name="descripcion" readonly>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">FECHA REG</label>
+                            <div class="controls">
+                                <input name="fecha_reg" type="date" class="form-control" readonly />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane center" id="esquema">
+                    <div class="span11">
+                        <div class="control-group">
+                            <label class="control-label">Titulo de Tesis</label>
+                            <div class="controls">
+                                <input type="text" class="form-control size-y" placeholder="Ingrese titulo de tesis" />
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Palabras clave</label>
+                            <div class="controls">
+                                <textarea class="form-control size-y"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Objetivos Principales</label>
+                            <div class="controls">
+                                <textarea class="cleditor size-y"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Objetivos Secundarios</label>
+                            <div class="controls">
+                                <textarea class="cleditor size-y"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">EStado</label>
+                            <div class="controls">
+                                <input type="text" readonly class="form-control size-y" value="PRESENTADO" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span11">
+                        <div class="btn-group">
+                            <a href="#estudiante" data-toggle="tab" class="btn btn-info"><i class="icon-arrow-left"></i> Atras</a>
+                            <button class="btn btn-success"><i class="icon-save"></i> GUARDAR</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="<?=$this->basePath('plugins/tesis.TnqSoft.js')?>"></script>

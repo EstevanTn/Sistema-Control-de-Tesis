@@ -7,7 +7,9 @@
         <div class="controls">
             <input type="text" class="form-control" readonly/>
             <input type="text" class="form-control span8" readonly />
-            <a href="#" class="btn btn-default"><i class="icon-search"></i></a>
+            <div class="btn-group">
+                <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('asesor', [ 'action' => 'buscar' ])?>" data-icon="icon-search" data-title="Buscar Asesor" class="btn btn-info" type="button"><i class="icon-search"></i></button>
+            </div>
         </div>
     </div>
     <div class="control-group">
@@ -15,7 +17,9 @@
         <div class="controls">
             <input type="text" class="form-control" readonly />
             <input type="text" class="form-control span8" readonly />
-            <a href="#" class="btn btn-default"><i class="icon-search"></i></a>
+            <div class="btn-group">
+                <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('estudiante', [ 'action' => 'mbuscar' ])?>" data-icon="icon-search" data-title="Buscar Asesor" class="btn btn-info" type="button"><i class="icon-search"></i></button>
+            </div>
         </div>
     </div>
     <div class="control-group">

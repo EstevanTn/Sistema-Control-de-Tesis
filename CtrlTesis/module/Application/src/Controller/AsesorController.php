@@ -9,14 +9,43 @@
 namespace Application\Controller;
 
 
+use Application\Model\ModelAsesor;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\Db\Adapter\Adapter;
+use Application\Model\AuthSession;
+
 
 class AsesorController extends AbstractActionController
 {
+    public $dbAdapter;
 
     public function indexAction()
     {
+        $this->dbAdapter = $this->getPluginManager()->getServiceLocator()->get(Adapter::class);
+        if(AuthSession::AuthSession($this->dbAdapter)) {
+            $model = new ModelAsesor($this->dbAdapter);
+            $this->layout()->title = 'Lista de Asesores';
+            $this->layout()->navbar = AuthSession::getAuthPages($this->dbAdapter);
+            return new ViewModel([
+                'asesor' => $model->fetchAll(),
+            ]);
+        } else{
+            $this->redirect()->toRoute('auth');
+        }
         return new ViewModel();
+    }
+
+    public function buscarAction(){
+        $this->dbAdapter = $this->getPluginManager()->getServiceLocator()->get(Adapter::class);
+        if(AuthSession::AuthSession($this->dbAdapter)){
+            $model = new ModelAsesor($this->dbAdapter);
+            $this->layout('layout/blank');
+            return new ViewModel([
+                'asesor' => $model->fetchAll(),
+            ]);
+        }else{
+            $this->redirect()->toRoute('auth');
+        }
     }
 }
