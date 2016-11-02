@@ -21,7 +21,7 @@ class ProgramacionController extends AbstractActionController
     {
         $this->dbAdapter = $this->getPluginManager()->getServiceLocator()->get(Adapter::class);
         if(AuthSession::AuthSession($this->dbAdapter)){
-            $this->layout()->title = 'Lista de asesores';
+            $this->layout()->title = 'Lista de Programación';
             $this->layout()->navbar = AuthSession::getAuthPages($this->dbAdapter);
             return new ViewModel();
         }else{
