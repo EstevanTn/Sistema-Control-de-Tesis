@@ -10,7 +10,6 @@ var Estudiante = (function () {
                 direccion: direccion,
                 fecha_nac: fecha
             };
-            console.log(instance);
             this.loadInfo();
 
         },

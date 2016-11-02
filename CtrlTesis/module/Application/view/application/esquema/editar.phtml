@@ -21,7 +21,7 @@
                         <label class="control-label">Código</label>
                         <div class="controls">
                             <input class="form-control" type="text" name="codigo" value="<?=$this->escapeHtml($esquema['est_codigo'])?>">
-                            <button data-style="modal-lg" data-role="modal-async" data-href="" data-icon="icon-search" data-title="Buscar Estudiante" class="btn btn-default" type="button"><i class="icon-search"></i></button>
+                            <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('estudiante', [ 'action' => 'mbuscar' ])?>" data-icon="icon-search" data-title="Buscar Estudiante" class="btn btn-default" type="button"><i class="icon-search"></i></button>
                         </div>
                     </div>
                     <div class="control-group">
@@ -70,6 +70,7 @@
             </div>
             <div class="tab-pane center" id="esquema">
                 <div class="span7">
+                    <input type="hidden" value="<?=$this->escapeHtml($esquema['tram_id'])?>">
                     <div class="control-group">
                         <label class="control-label">Titulo de Tesis</label>
                         <div class="controls">
@@ -79,25 +80,19 @@
                     <div class="control-group">
                         <label class="control-label">Palabras clave</label>
                         <div class="controls">
-                            <textarea name="palabrasClaves" class="form-control size-y">
-                                <?=$this->escapeHtml($esquema['keyswords'])?>
-                            </textarea>
+                            <textarea name="palabrasClaves" class="form-control size-y"><?=$this->escapeHtml($esquema['keyswords'])?></textarea>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">Objetivos Principales</label>
                         <div class="controls">
-                            <textarea name="objPrincipales" class="cleditor size-y">
-                                <?=$this->escapeHtml($esquema['obj_pri'])?>
-                            </textarea>
+                            <textarea name="objPrincipales" class="cleditor size-y"><?=$this->escapeHtml($esquema['obj_pri'])?></textarea>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label">Objetivos Secundarios</label>
                         <div class="controls">
-                            <textarea name="objSecundarios" class="cleditor size-y">
-                                <?=$this->escapeHtml($esquema['obj_sec'])?>
-                            </textarea>
+                            <textarea name="objSecundarios" class="cleditor size-y"><?=$this->escapeHtml($esquema['obj_sec'])?></textarea>
                         </div>
                     </div>
                     <div class="control-group">
@@ -114,9 +109,4 @@
         </form>
     </div>
 </div>
-<script>
-    $('#myTab a').click(function (e) {
-        e.preventDefault()
-        $(this).tab('show')
-    })
-</script>
+<script src="<?=$this->basePath('plugins/estudiante.TnqSoft.js')?>"></script>
