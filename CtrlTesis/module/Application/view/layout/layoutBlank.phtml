@@ -1,1 +1,19 @@
-<?=$this->content?>
+<?=$this->doctype()?>
+<html lang="en">
+    <head>
+        <link href="<?=$this->basePath('css/datatables.min.css')?>" rel="stylesheet">
+    </head>
+    <body>
+        <?=$this->content?>
+        <script src="<?=$this->basePath('js/jquery-1.9.1.min.js')?>"></script>
+        <script src='<?=$this->basePath('js/jquery.dataTables.min.js')?>'></script>
+        <script>
+            $(document).ready(function (e) {
+                jQuery('#myTab a').click(function (e) {
+                    e.preventDefault();
+                    $(this).tab('show');
+                });
+            });
+        </script>
+    </body>
+</html>

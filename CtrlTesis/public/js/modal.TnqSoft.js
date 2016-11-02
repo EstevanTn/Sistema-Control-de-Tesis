@@ -114,6 +114,9 @@
                 body.innerHTML = response;
                 setTimeout(function(){
                     init();
+                    if(modalEvents!==undefined){
+                        modalEvents(instance);
+                    }
                 });
                 selectOptionClose(instance);
             }
@@ -193,6 +196,7 @@
             _instance: modalInstance
         }
     }());
+    
     
     document.addEventListener('DOMContentLoaded',init,false);
 }(TNQSOFT));
