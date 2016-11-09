@@ -9,15 +9,26 @@
 namespace Application\Controller;
 
 
+use Application\Model\AuthSession;
+use Zend\Db\Adapter\Adapter;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class TesisController extends AbstractActionController
 {
-    
+
+    public $dbAdapter;
+
     public function indexAction()
     {
-        return new ViewModel();
+        $this->dbAdapter = $this->getPluginManager()->getServiceLocator()->get(Adapter::class);
+        if(AuthSession::AuthSession($this->dbAdapter)){
+            $this->layout()->title = 'Lista de Tesis';
+            $this->layout()->navbar = AuthSession::getAuthPages($this->dbAdapter);
+            return new ViewModel();
+        }else{
+            $this->redirect()->toRoute('auth');
+        }
     }
 
 }
