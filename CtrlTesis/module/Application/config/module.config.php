@@ -176,6 +176,20 @@ return [
                     ],
                 ],
             ],
+            'tramite' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/tramite[/:action[/:key]]',
+                    'defaults' => [
+                        'controller' => Controller\TramiteController::class,
+                        'action'     => 'index',
+                        'constraints' => [
+                            'action' => '[a-z]+',
+                            'key' => '[0-9]+'
+                        ],
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
@@ -191,6 +205,7 @@ return [
             Controller\UsuarioController::class => InvokableFactory::class,
             Controller\TesisController::class => InvokableFactory::class,
             Controller\EvaluacionController::class => InvokableFactory::class,
+            Controller\TramiteController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

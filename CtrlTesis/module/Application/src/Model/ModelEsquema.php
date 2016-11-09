@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: tnqsoft
- * Date: 30/10/16
- * Time: 06:58 PM
- */
 
 namespace Application\Model;
 
@@ -32,8 +26,36 @@ class ModelEsquema implements InterfaceModel
     }
     
     public function insert(){
-        
-        
+        $response = array();
+        $response['post'] = false;
+        if(isset($_POST['submit'])){
+            $response['post'] = true;
+            $tramite = $_POST['tramite'];
+            $titulo = $_POST['tituloTesis'];
+            $palabras = $_POST['palabrasClaves'];
+            $objP = $_POST["objPrincipales"];
+            $objS = $_POST["objSecundarios"];
+            $resumen = $_POST['resumen'];
+            $estado = $_POST["estado"];
+            $usuario = AuthSession::get('id');
+            try{
+                $sql = sprintf("CALL pa_InsertEsquema('%s', '%s','%s','%s','%s', '%s', '%s', '%s')",
+                    $tramite, $titulo, $palabras, $objP, $objS, $resumen, $estado, $usuario);
+                $statement = $this->dbAdapter->query($sql);
+                $result = $statement->execute();
+                if($result){
+                    $response['mensaje'] = 'Se ha guardado Correctamente el nuevo esquema.';
+                    $response['estado'] = true;
+                }else{
+                    $response['mensaje'] = '';
+                    $response['estado'] = false;
+                }
+            }catch (\Exception $ex){
+                $response['mensaje'] = $ex->getMessage();
+                $response['estado'] = false;
+            }
+        }
+        return $response;
     }
 
     public function delete($id)

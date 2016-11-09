@@ -13,7 +13,7 @@ use Zend\Db\Adapter\Adapter;
 
 interface InterfaceModel
 {
-    
+        
     public function __construct(Adapter $adapter);
 
     public function fetchAll();
