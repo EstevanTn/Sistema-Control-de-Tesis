@@ -30,17 +30,16 @@
                         <div class="control-group">
                             <label class="control-label">Estado</label>
                             <div class="controls">
-                                <input type="text" readonly class="form-control size-y" value="APROBADO" />
+                                <input type="text" readonly class="form-control size-y" value="APROBADO" name="estadoeva"/>
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">CODIGO EVALUACION</label>
                             <div class="controls">
                                 <div class="input-prepend input-append">
-                                    <input readonly type="text" class="form-control" NAME="evaluacion" />
+                                    <input readonly type="text" class="form-control" name="codigoeva" />
                                     <div class="btn-group">
-                                        <button id="btn-buscar-evaluacion" data-role="modal-async" data-href="" data-title="Evaluaciones" data-icon="icon-list" class="btn btn-info" type="button"><i class="icon-search"></i></button>
-                                        <button data-role="modal-async" data-href="" data-title="Nueva Evaluacion" data-icon="icon-plus" class="btn btn-success" type="button"><i class="icon-plus"></i></button>
+                                        <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('evaluacion', [ 'action' => 'mbuscar' ])?>" data-icon="icon-search" data-title="Buscar Docente" class="btn btn-info" type="button"><i class="icon-search"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -48,13 +47,13 @@
                         <div class="control-group">
                             <label class="control-label">Descripcion</label>
                             <div class="controls">
-                                <input class="form-control" type="text" name="descripcion" readonly>
+                                <input class="form-control" type="text" name="descripcioneva" readonly>
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">FECHA REG</label>
                             <div class="controls">
-                                <input name="fecha_reg" type="date" class="form-control" readonly />
+                                <input name="fechaeva" type="date" class="form-control" readonly />
                             </div>
                         </div>
                     </div>
@@ -104,3 +103,4 @@
     </div>
 </div>
 <script src="<?=$this->basePath('plugins/tesis.TnqSoft.js')?>"></script>
+<script src="<?=$this->basePath('plugins/Evaluacion1.js')?>"></script>

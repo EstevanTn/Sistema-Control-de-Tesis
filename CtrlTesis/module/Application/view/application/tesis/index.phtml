@@ -31,7 +31,6 @@
                 <tr>
                     <td><?=$tes['acta_id']?></td>
                     <td><?=$tes['titulo_tesis']?></td>
-                    <td><?=sprintf("%s %s %s",$tes['eva_descripcion'], $tes['eva_fecha_reg'])?></td>
                     <td><?=$tes['estado_tesis']?></td>
                     <td>
                         <a href="<?=$this->url('tesis',['action' => 'editar', 'key' => $tes['acta_id']])?>" class="btn btn-info btn-inverse"><i class="icon-edit"></i></a>

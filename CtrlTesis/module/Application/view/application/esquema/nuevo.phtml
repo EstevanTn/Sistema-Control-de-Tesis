@@ -30,7 +30,7 @@
                         <div class="control-group">
                             <label class="control-label">CÓDIGO</label>
                             <div class="controls">
-                                <input readonly class="form-control" type="text" name="codigo">
+                                <input readonly validate="numeric" data-length="10" class="form-control" type="text" name="codigo">
                                 <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('estudiante', [ 'action' => 'mbuscar' ])?>" data-icon="icon-search" data-title="Buscar Estudiante" class="btn btn-info" type="button"><i class="icon-search"></i></button>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                                     <input readonly type="text" class="form-control" NAME="tramite" />
                                     <div class="btn-group">
                                         <button id="btn-buscar-tramite" data-role="modal-async" data-base="<?=$this->basePath()?>" data-title="Tramites" data-icon="icon-list" class="btn btn-info" type="button"><i class="icon-search"></i></button>
-                                        <button data-role="modal-async" data-href="" data-title="Nuevo Tramite" data-icon="icon-plus" class="btn btn-success" type="button"><i class="icon-plus"></i></button>
+                                        <button data-role="modal-async" data-href="<?=$this->url('tramite', [ 'action' => 'mbuscar' ])?>" data-title="Nuevo Tramite" data-icon="icon-plus" class="btn btn-success" type="button"><i class="icon-plus"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -83,25 +83,25 @@
                         <div class="control-group">
                             <label class="control-label">Titulo de Tesis</label>
                             <div class="controls">
-                                <input name="tituloTesis" type="text" class="form-control size-y" placeholder="Ingrese titulo de tesis" />
+                                <input name="tituloTesis" validate="text" data-length="300" type="text" class="form-control size-y" placeholder="Ingrese titulo de tesis" />
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Palabras clave</label>
                             <div class="controls">
-                                <textarea name="palabrasClaves" class="form-control size-y"></textarea>
+                                <textarea name="palabrasClaves" validate="text" data-length="255" class="form-control size-y"></textarea>
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Objetivos Principales</label>
                             <div class="controls">
-                                <textarea name="objPrincipales" class="cleditor size-y"></textarea>
+                                <textarea name="objPrincipales" validate="text" data-length="255" class="cleditor size-y"></textarea>
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Objetivos Secundarios</label>
                             <div class="controls">
-                                <textarea name="objSecundarios" class="cleditor size-y"></textarea>
+                                <textarea name="objSecundarios" validate="text" data-length="500" class="cleditor size-y"></textarea>
                             </div>
                         </div>
                         <div class="control-group">

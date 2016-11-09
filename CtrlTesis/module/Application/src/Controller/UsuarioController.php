@@ -35,4 +35,40 @@ class UsuarioController extends AbstractActionController
         }
     }
 
+    public function nuevoAction(){
+        $this->dbAdapter = $this->getPluginManager()->getServiceLocator()->get(Adapter::class);
+        if(AuthSession::AuthSession($this->dbAdapter)){
+            $model = new ModelUsuario($this->dbAdapter);
+            $this->layout()->title = 'Nuevo Usuario';
+            $this->layout()->navbar = AuthSession::getAuthPages($this->dbAdapter);
+            return new ViewModel($model->insert());
+        }else{
+            $this->redirect()->toRoute('auth');
+        }
+    }
+
+    public function editarAction(){
+        $this->dbAdapter = $this->getPluginManager()->getServiceLocator()->get(Adapter::class);
+        if(AuthSession::AuthSession($this->dbAdapter)){
+            $model = new ModelUsuario($this->dbAdapter);
+            $this->layout()->title = 'Editando Usuario';
+            $this->layout()->navbar = AuthSession::getAuthPages($this->dbAdapter);
+            return new ViewModel();
+        }else{
+            $this->redirect()->toRoute('auth');
+        }
+    }
+
+    public function verAction()
+    {
+        $this->dbAdapter = $this->getPluginManager()->getServiceLocator()->get(Adapter::class);
+        if(AuthSession::AuthSession($this->dbAdapter)){
+            $model = new ModelUsuario($this->dbAdapter);
+            $this->layout('layout/blank');
+            return new ViewModel();
+        }else{
+            $this->redirect()->toRoute('auth');
+        }
+    }
+
 }

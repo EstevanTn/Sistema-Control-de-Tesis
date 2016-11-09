@@ -1,27 +1,30 @@
+<div class="page-header">
+    <h3>Usuarios</h3>
+</div>
 <div class="row-fluid">
     <div class="control-group">
         <div class="btn-group">
-            <a href="<?= $this->url('usuario',array('action'=>'nuevo')) ?>" class="btn btn-success"><i class="icon-plus"></i> NUEVO</a>
-            <a href="#" class="btn btn-warning"><i class="icon-th"></i> GENERAR REPORTE</a>
+            <a href="<?= $this->url('usuario',array('action'=>'nuevo'))?>" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> NUEVO</a>
+            <a href="#" class="btn btn-warning"><i class="glyphicon glyphicon-th"></i> GENERAR REPORTE</a>
         </div>
     </div>
-    <br>
 </div>
 <div class="row-fluid">
-    <div class="span12">
-        <table class="table table-bordered table-hover">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">LISTA DE USUARIOS</h2>
+        </div>
+        <table id="usuario" class="panel-body table table-bordered table-striped table-condensed">
             <thead>
-            <tr>
-                <th>#</th>
-                <th>USUARIO</th>
-                <th>NOMBRE</th>
-                <th>TIPO</th>
-                <th>ESTADO</th>
-                <th>OPCIONES</th>
-            </tr>
+            <th>#</th>
+            <th>USUARIO</th>
+            <th>NOMBRE</th>
+            <th>TIPO</th>
+            <th>ESTADO</th>
+            <th>OPCIONES</th>
             </thead>
             <tbody>
-           <?php foreach ($usuarios as $usuario):?>
+            <?php foreach ($usuarios as $usuario):?>
                 <tr>
                     <td><?= $this->escapeHtml($usuario['usu_id']) ?></td>
                     <td><?= $this->escapeHtml($usuario['usu_login']) ?></td>
@@ -30,18 +33,18 @@
                     <td><?= $this->escapeHtml($usuario['usu_estado']) ?></td>
                     <td class="center">
                         <div class="btn-group">
-                            <button data-title="Usuario #<?=$usuario['usu_id']?>" data-role="modal-async" data-style="modal-lg" data-icon="halflings-icon eye-open" data-href="<?= $this->url('usuario', ['action'=>'ver','id'=>$usuario['usu_id']])?>" class="btn btn-info"><i class="halflings-icon eye-open white"></i></button>
+                            <button data-title="Usuario #<?=$usuario['usu_id']?>" data-role="modal-async" data-style="modal-lg" data-icon="halflings-icon eye-open" data-href="<?= $this->url('usuario', ['action'=>'ver','key'=>$usuario['usu_id']])?>" class="btn btn-info"><i class="halflings-icon eye-open white"></i></button>
                             <?php
-                            if($usuario['tipo_usu_nombre']!='ADMINISTRADOR'){
+                            if($usuario['tipo_usu_nombre']!='ADMINISTRADOR') {
                                 ?>
-                                <a href="<?= $this->url('usuario', ['action'=>'editar','id'=>$usuario['usu_id']])?>" class="btn btn-success"><i class="icon-edit"></i></a>
+                                <a href="<?= $this->url('usuario', ['action' => 'editar', 'key' => $usuario['usu_id']]) ?>"
+                                   class="btn btn-success"><i class="icon-edit"></i></a>
                                 <?php
                             }
                             ?>
-                        </div>
                     </td>
                 </tr>
-            <?endforeach;?>
+            <?php endforeach;?>
             </tbody>
         </table>
     </div>

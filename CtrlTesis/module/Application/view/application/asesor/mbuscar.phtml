@@ -3,9 +3,10 @@
         <thead>
         <tr>
             <th>CODIGO</th>
-            <th># TRÁMITE</th>
             <th>CODIGO DOCENTE</th>
-            <th>ESTADO INFORME</th>
+            <th>NOMBRE DOCENTE</th>
+            <th>APELLIDO PATERNO</th>
+            <th>APELLIDO MATERNO</th>
         </tr>
         </thead>
         <tbody>
@@ -14,11 +15,12 @@
 
             <tr>
                 <td><?=$this->escapeHtml($item['asesoria_id'])?></td>
-                <td><?=$this->escapeHtml($item['tram_id'])?></td>
                 <td><?=$this->escapeHtml($item['doc_codigo'])?></td>
-                <td><?=$this->escapeHtml($item['estado_informe'])?></td>
+                <td><?=$this->escapeHtml($item['per_nombre'])?></td>
+                <td><?=$this->escapeHtml($item['per_ape_pat'])?></td>
+                <td><?=$this->escapeHtml($item['per_ape_mat'])?></td>
                 <td>
-                    <button data-role="close-modal" data-action="Asesoria.elegir('<?=$item['asesoria_id']?>')" class="btn btn-primary"><i class="icon-check"></i></button>
+                    <button data-role="close-modal" data-action="Asesoria.elegir('<?=$item['asesoria_id']?>','<?=$item['per_nombre']?>')" class="btn btn-primary"><i class="icon-check"></i></button>
                 </td>
             </tr>
 

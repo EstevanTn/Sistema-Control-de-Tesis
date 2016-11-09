@@ -1,3 +1,14 @@
+<div class="page-header">
+    <h3>Jurados</h3>
+</div>
+<div class="form-horizontal">
+    <div class="control-group">
+        <div class="btn-group">
+            <a href="<?= $this->url('jurado', array('action'=>'nuevo'))?>" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> NUEVO</a>
+            <a class="btn btn-warning"><i class="glyphicon glyphicon-th"></i> GENERAR REPORTES</a>
+        </div>
+    </div>
+</div>
 <div class="row-fluid">
     <table>
         <thead>
@@ -6,7 +17,7 @@
                 <th>NOMBRES Y APELLIDOS</th>
                 <th>CARGO</th>
                 <th>TIPO JURADO</th>
-                <th>OPCIONES</th>
+                <th>EDITAR</th>
             </tr>
         </thead>
         <tbody>
@@ -19,7 +30,7 @@
                     <td><?=$this->escapeHtml($item['tipo_jurado'])?></td>
                     <td>
                         <a class="btn btn-primary" href="<?=$this->url('jurado', ['action'=>'editar', 'key'=>$item['jur_id']])?>" class="btn btn-primary">
-                            <i class="icon-check"></i>
+                            <i class="icon-edit"></i>
                         </a>
                     </td>
                 </tr>

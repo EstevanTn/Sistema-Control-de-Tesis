@@ -23,19 +23,28 @@ class ModelAsesor implements InterfaceModel
 
     public function fetchAll()
     {
-        $sql = sprintf("SELECT * FROM asesoria");
-        $statement = $this->dbAdapter->query($sql);
+        $statement = $this->dbAdapter->query("SELECT * FROM view_asesor");
         $results = $statement->execute();
-        $list =array();
-        foreach ($results as $row){
-            $list[] = $row;
+        $list = array();
+        foreach ($results as $item){
+            $list[] = $item;
         }
         return $list;
     }
 
     public function insert()
     {
-        // TODO: Implement insert() method.
+        $response = array();
+        $response['post'] = false;
+        if(isset($_POST['submit'])){
+            $response['post'] = true;
+            $codigo = $_POST['codigo'];
+            $sql = sprintf("CALL insert_asesor()");
+            $statement = $this->dbAdapter->query($sql);
+            $result = $statement->execute();
+
+        }
+        return $response;
     }
 
     public function update()
@@ -50,11 +59,33 @@ class ModelAsesor implements InterfaceModel
 
     public function get($id)
     {
-        // TODO: Implement get() method.
+        $response = array();
+        $response['post'] = false;
+        if(isset($_POST['submit'])){
+            $response['post'] = true;
+            $codigo = $_POST['codigo'];
+            $sql = sprintf("CALL insert_asesor()");
+            $statement = $this->dbAdapter->query($sql);
+            $result = $statement->execute();
+
+        }
+        return $response;
     }
 
     public function search(array $data)
     {
         // TODO: Implement search() method.
     }
+    
+    
+    public function alumnos($key){
+        $statement = $this->dbAdapter->query("call pa_listar_asesorados('".$key."')");
+        $results = $statement->execute();
+        $list = array();
+        foreach ($results as $item){
+            $list[] = $item;
+        }
+        return $list;
+    }
+    
 }

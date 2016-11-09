@@ -1,10 +1,10 @@
 var Evaluacion = (function () {
     var instance;
     return{
-        elegir: function (codigo) {
+        elegir: function (codigo, estado) {
             instance = {
                 codigo: codigo,
-
+                estado: estado,
             };
             this.loadInfo();
 
@@ -12,6 +12,7 @@ var Evaluacion = (function () {
         instance: instance,
         loadInfo: function () {
             $('[name=codigoeva]').val(instance.codigo);
+            $('[name=estado]').val(instance.estado);
 
         },
 

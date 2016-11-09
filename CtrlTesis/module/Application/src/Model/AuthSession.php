@@ -43,7 +43,7 @@ class AuthSession
 
     public static function getAuthPages(Adapter $dbAdapter){
         $idRol = self::get('rol_id');
-        $sql = sprintf("SELECT * FROM pagina WHERE tipo_usu_id='%s' AND pag_estado=1 AND ISNULL(pag_padre)=1", $idRol);
+        $sql = sprintf("SELECT * FROM pagina WHERE tipo_usu_id='%s' AND pag_estado=1 AND ISNULL(pag_padre)=1 ORDER BY pag_nombre ASC", $idRol);
         $statement = $dbAdapter->query($sql);
         $results = $statement->execute();
         foreach ($results as $key => $row){

@@ -5,8 +5,8 @@
     <div class="control-group">
         <label class="control-label">Codigo Asesoria</label>
         <div class="controls">
-            <input type="text" class="form-control" readonly/>
-            <input type="text" class="form-control span8" readonly name="codigo" />
+            <input type="text" class="form-control" readonly name="codigo"/>
+            <input type="text" class="form-control span8" readonly name="nombre" />
             <div class="btn-group">
                 <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('asesor', [ 'action' => 'mbuscar' ])?>" data-icon="icon-search" data-title="Buscar Asesoria" class="btn btn-info" type="button"><i class="icon-search"></i></button>
             </div>
@@ -15,8 +15,8 @@
     <div class="control-group">
         <label class="control-label">Codigo Evaluación</label>
         <div class="controls">
-            <input type="text" class="form-control" readonly />
-            <input type="text" class="form-control span8" readonly name="codigoeva"/>
+            <input type="text" class="form-control" readonly name="codigoeva"/>
+            <input type="text" class="form-control span8" readonly name="estadoeva" />
             <div class="btn-group">
                 <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('evaluacion', [ 'action' => 'mbuscar' ])?>" data-icon="icon-search" data-title="Buscar Evaluacion" class="btn btn-info" type="button"><i class="icon-search"></i></button>
             </div>
@@ -42,3 +42,4 @@
 </form>
 <script src="<?=$this->basePath('plugins/Asesoria.js')?>"></script>
 <script src="<?=$this->basePath('plugins/Evaluacion.js')?>"></script>
+<script src="<?=$this->basePath('plugins/Evaluacion2.js')?>"></script>

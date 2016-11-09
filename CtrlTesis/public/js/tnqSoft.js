@@ -372,7 +372,7 @@
                     }
                 }
             }
-        }
+        };
         xhr.open(options.type,options.url,true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send(options.data);

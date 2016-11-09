@@ -1,3 +1,13 @@
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i>
+        <a href="<?=$this->url('home')?>">Inicio</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="#" class="disabled">Lista de Asesores</a>
+    </li>
+</ul>
 <form class="form-horizontal" role="form" method="post">
     <ul class="nav nav-tabs">
         <li class="active"><a href="#asesor" data-toggle="tab" >Datos de Docente</a></li>
@@ -10,34 +20,26 @@
                 <div class="control-group">
                     <label class="control-label">Código</label>
                     <div class="controls">
-                        <div class="input-prepend input-append">
-                            <input type="text" class="form-control" />
-                            <a href="#" class="btn btn-default" ><i class="icon-search"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">DNI</label>
-                    <div class="controls">
-                        <input type="text" readonly class="form-control" />
+                        <input readonly class="form-control" type="text" name="codigo">
+                        <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('docente', [ 'action' => 'mbuscar' ])?>" data-icon="icon-search" data-title="Buscar Docente" class="btn btn-info" type="button"><i class="icon-search"></i></button>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Nombres</label>
                     <div class="controls">
-                        <input type="text" class="form-control size-y" name="nombres" readonly>
+                        <input type="text" class="form-control size-y" name="nombre" readonly>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Ap. Paterno</label>
                     <div class="controls">
-                        <input type="text" class="form-control size-y" name="ape_pat" readonly>
+                        <input type="text" class="form-control size-y" name="apepat" readonly>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Ap. Materno</label>
                     <div class="controls">
-                        <input type="text" class="form-control" name="ape_mat" readonly>
+                        <input type="text" class="form-control size-y" name="apemat" readonly>
                     </div>
                 </div>
                 <div class="form-group pull-right">
@@ -50,21 +52,16 @@
             <div class="span12">
                 <div class="control-group">
                     <div class="btn-group">
-                        <button class="btn btn-success"><i class="icon-plus"></i></button>
-                        <button class="btn btn-danger"><i class="icon-remove"></i></button>
+                        <button class="btn btn-success" type="button"><i class="icon-plus"></i></button>
+                        <button class="btn btn-danger" type="button"><i class="icon-remove"></i></button>
+                        <button class="btn btn-default" onclick="Docente.loadAsesorados('#listAsesorados', '<?=$this->url('asesor', ['action'=>'alumnos'])?>');" type="button"><i class="icon-spin icon-refresh"></i> CARGAR ALUMNOS</button>
                     </div>
                 </div>
             </div>
-            <table class="row-fluid table table-bordered table-hover">
-                <thead>
-                <th>#</th>
-                <th>Alumno</th>
-                <th>Titulo Tesis</th>
-                </thead>
-                <tbody>
+            <div class="span11" id="listAsesorados">
 
-                </tbody>
-            </table>
+            </div>
         </div>
     </div>
 </form>
+<script src="<?=$this->basePath('plugins/Docente.js')?>"></script>

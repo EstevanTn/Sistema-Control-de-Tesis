@@ -18,18 +18,20 @@ define('COOKIE_NAME', 'TnqSoftCookie');
 return [
     'db' => array(
         'driver' => 'Pdo',
-        'dsn'            => 'mysql:dbname=control_tesis;hostname=localhost',
-        'username'       => 'root',
-        'password'       => '',
+        'dsn'            => 'mysql:dbname=jhankevi_tesis;host=184.154.80.186',
+        'host'           => '184.154.80.186',
+        'username'       => 'jhankevi_tesis',
+        'password'       => 'Tume_2094',
         'driver_options' => array(
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
         ),
     ),
     /*'db'=>array(
         'driver' => 'Mysqli',
-        'database' => 'control_tesis',
-        'username' => 'root',
-        'password' => '',
+        'host' => '184.154.80.186',
+        'database' => 'jhankevi_tesis',
+        'username' => 'jhankevi_tesis',
+        'password' => '@Tume_2094',
         'charset'  => 'utf8',
         'options' => array('buffer_results' => true)
     ),*/

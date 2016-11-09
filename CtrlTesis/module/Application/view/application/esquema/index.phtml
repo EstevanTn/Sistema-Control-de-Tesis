@@ -1,7 +1,7 @@
 <ul class="breadcrumb">
     <li>
         <i class="icon-home"></i>
-        <a href="index.html">Inicio</a>
+        <a href="<?=$this->url('home')?>">Inicio</a>
     </li>
 </ul>
 <div class="row-fluid">
@@ -24,21 +24,23 @@
             <thead>
             <th>N° TRAMITE</th>
             <th>TITULO DE TESIS</th>
+            <th>CODIGO ESTUDIANTE</th>
             <th>ESTUDIANTE</th>
             <th>ESTADO</th>
             <th></th>
             </thead>
             <tbody>
             <?php foreach ($esquemas as $esq):?>
-            <tr>
-                <td><?=$esq['tram_id']?></td>
-                <td><?=$esq['titulo_tesis']?></td>
-                <td><?=sprintf("%s %s %s",$esq['per_nombre'], $esq['per_ape_pat'], $esq['per_ape_mat'])?></td>
-                <td><?=$esq['esq_estado']?></td>
-                <td>
-                    <a href="<?=$this->url('esquema',['action' => 'editar', 'key' => $esq['tram_id']])?>" class="btn btn-info btn-inverse"><i class="icon-edit"></i></a>
-                </td>
-            </tr>
+                <tr>
+                    <td><?=$esq['tram_id']?></td>
+                    <td><?=$esq['titulo_tesis']?></td>
+                    <td><?=$esq['est_codigo']?></td>
+                    <td><?=sprintf("%s %s %s",$esq['per_nombre'], $esq['per_ape_pat'], $esq['per_ape_mat'])?></td>
+                    <td><?=$esq['esq_estado']?></td>
+                    <td>
+                        <a href="<?=$this->url('esquema',['action' => 'editar', 'key' => $esq['tram_id']])?>" class="btn btn-info btn-inverse"><i class="icon-edit"></i></a>
+                    </td>
+                </tr>
             <?php endforeach;?>
             </tbody>
         </table>

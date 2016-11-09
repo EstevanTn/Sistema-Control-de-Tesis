@@ -20,6 +20,18 @@ var Global = (function(){
                     }
                 });
             });
+        },
+        LoadJQuery: function (target, url) {
+            $(target).html('<p class="text-info">Cargando ...</p>');
+            TNQSOFT.httpAsync({
+                url: url,
+                success: function (response) {
+                    $(target).html(response);
+                },
+                error: function (xhr, status) {
+                    $(target).html(status);
+                }
+            })
         }
     }
 }());

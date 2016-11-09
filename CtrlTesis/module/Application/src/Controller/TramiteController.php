@@ -34,4 +34,17 @@ class TramiteController extends AbstractActionController
         ]);
     }
 
+    public function mbuscarAction(){
+        $this->dbAdapter = $this->getPluginManager()->getServiceLocator()->get(Adapter::class);
+        if(AuthSession::AuthSession($this->dbAdapter)){
+            $model = new ModelTramite($this->dbAdapter);
+            $this->layout('layout/blank');
+            return new ViewModel([
+                'tramites' => $model->fetchAll(),
+            ]);
+        }else{
+            $this->redirect()->toRoute('auth');
+        }
+    }
+
 }

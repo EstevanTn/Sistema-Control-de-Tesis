@@ -162,6 +162,20 @@ return [
                     ],
                 ],
             ],
+            'cargo' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/cargo[/:action[/:key]]',
+                    'defaults' => [
+                        'controller' => Controller\CargoController::class,
+                        'action'     => 'index',
+                        'constraints' => [
+                            'action' => '[a-z]+',
+                            'key' => '[0-9]+'
+                        ],
+                    ],
+                ],
+            ],
             'evaluacion' => [
                 'type'    => Segment::class,
                 'options' => [
@@ -204,6 +218,7 @@ return [
             Controller\ProgramacionController::class => InvokableFactory::class,
             Controller\UsuarioController::class => InvokableFactory::class,
             Controller\TesisController::class => InvokableFactory::class,
+            Controller\CargoController::class => InvokableFactory::class,
             Controller\EvaluacionController::class => InvokableFactory::class,
             Controller\TramiteController::class => InvokableFactory::class,
         ],

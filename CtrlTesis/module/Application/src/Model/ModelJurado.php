@@ -33,9 +33,18 @@ class ModelJurado implements InterfaceModel
         return $list;
     }
 
-    public function insert()
-    {
-        // TODO: Implement insert() method.
+    public function insert(){
+        $response = array();
+        $response['post'] = false;
+        if(isset($_POST['submit'])){
+            $response['post'] = true;
+            $codigo = $_POST['codigo'];
+            $sql = sprintf("CALL pa_insert_jurado()");
+            $statement = $this->dbAdapter->query($sql);
+            $result = $statement->execute();
+
+        }
+        return $response;
     }
 
     public function update()

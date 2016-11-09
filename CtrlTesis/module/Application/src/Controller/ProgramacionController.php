@@ -9,11 +9,13 @@
 namespace Application\Controller;
 
 
+use Application\Model\AuthSession;
 use Application\Model\ModelProgramacion;
+use Zend\Db\Adapter\Adapter;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Application\Model\AuthSession;
-use Zend\Db\Adapter\Adapter;;
+
+;
 
 class ProgramacionController extends AbstractActionController
 {
