@@ -1,0 +1,24 @@
+<div class="row-fluid">
+    <h2>COD. ESTUDIANTE <?=$codigo?></h2>
+    <br>
+    <table class="box-content table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>N° PAGO</th>
+            <th>FECHA</th>
+            <th>SELECCIONAR</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($tramites as $item):?>
+            <tr>
+                <td><?=$item['tram_id']?></td>
+                <td><?=$item['pag_codigo']?></td>
+                <td><?=$item['tram_fecha_reg']?></td>
+                <td><button data-role="close-modal" data-action="Estudiante.nroTramite(<?=$item['tram_id']?>)" class="btn btn-success"><i class="icon-ok-circle"></i></button></td>
+            </tr>
+        <?php endforeach;?>
+        </tbody>
+    </table>
+</div>

@@ -16,7 +16,9 @@ use Zend\View\Model\ViewModel;
 
 class TesisController extends AbstractActionController
 {
-    
+
+    public $dbAdapter;
+
     public function indexAction()
     {
         $this->dbAdapter = $this->getPluginManager()->getServiceLocator()->get(Adapter::class);

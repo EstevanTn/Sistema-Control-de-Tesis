@@ -162,6 +162,34 @@ return [
                     ],
                 ],
             ],
+            'evaluacion' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/evaluacion[/:action[/:key]]',
+                    'defaults' => [
+                        'controller' => Controller\EvaluacionController::class,
+                        'action'     => 'index',
+                        'constraints' => [
+                            'action' => '[a-z]+',
+                            'key' => '[0-9]+'
+                        ],
+                    ],
+                ],
+            ],
+            'tramite' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/tramite[/:action[/:key]]',
+                    'defaults' => [
+                        'controller' => Controller\TramiteController::class,
+                        'action'     => 'index',
+                        'constraints' => [
+                            'action' => '[a-z]+',
+                            'key' => '[0-9]+'
+                        ],
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
@@ -176,6 +204,8 @@ return [
             Controller\ProgramacionController::class => InvokableFactory::class,
             Controller\UsuarioController::class => InvokableFactory::class,
             Controller\TesisController::class => InvokableFactory::class,
+            Controller\EvaluacionController::class => InvokableFactory::class,
+            Controller\TramiteController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
