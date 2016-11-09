@@ -13,7 +13,7 @@
     <form method="post">
         <div class="span6">
             <div class="control-group">
-                <div class="control-label">Fecha Inicio</div>
+                <div class="control-label">Fecha Programada</div>
                 <div class="controls">
                     <input type="date" class="form-control"/>
                 </div>
@@ -32,12 +32,27 @@
 </div>
 <table class="table table-bordered table-hover">
     <thead>
-    <th>#</th>
+    <th>Codigo</th>
+    <th>Asesoria</th>
+    <th>Evaluacion</th>
     <th>Fecha</th>
     <th>Hora</th>
-    <th>Detalles</th>
+    <th>Fecha-Sistema</th>
     </thead>
     <tbody>
-
+    <?php foreach ($programacion as $pro):?>
+        <tr>
+            <td><?=$pro['prog_id']?></td>
+            <td><?=$pro['asesoria_id']?></td>
+            <td><?=$pro['eva_id']?></td>
+            <td><?=$pro['prog_fecha']?></td>
+            <td><?=$pro['prog_hora']?></td>
+            <td><?=$pro['prog_f_reg']?></td>
+            <td>
+                <a href="<?=$this->url('programacion',['action' => 'editar', 'key' => $pro['prog_id']])?>" class="btn btn-info btn-inverse"><i class="icon-edit"></i></a>
+            </td>
+        </tr>
+    <?php endforeach;?>
+    </tbody>
     </tbody>
 </table>

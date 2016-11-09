@@ -1,0 +1,29 @@
+<div class="row-fluid">
+    <table id="tbAsesoria" class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th>CODIGO</th>
+            <th># TRÁMITE</th>
+            <th>CODIGO DOCENTE</th>
+            <th>ESTADO INFORME</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <?php foreach ($asesoria as $item):?>
+
+            <tr>
+                <td><?=$this->escapeHtml($item['asesoria_id'])?></td>
+                <td><?=$this->escapeHtml($item['tram_id'])?></td>
+                <td><?=$this->escapeHtml($item['doc_codigo'])?></td>
+                <td><?=$this->escapeHtml($item['estado_informe'])?></td>
+                <td>
+                    <button data-role="close-modal" data-action="Asesoria.elegir('<?=$item['asesoria_id']?>')" class="btn btn-primary"><i class="icon-check"></i></button>
+                </td>
+            </tr>
+
+        <?php endforeach;?>
+
+        </tbody>
+    </table>
+</div>

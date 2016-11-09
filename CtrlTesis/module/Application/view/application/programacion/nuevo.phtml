@@ -3,39 +3,33 @@
 </div>
 <form class="form-horizontal">
     <div class="control-group">
-        <label class="control-label">Datos de Asesor</label>
+        <label class="control-label">Codigo Asesoria</label>
         <div class="controls">
             <input type="text" class="form-control" readonly/>
-            <input type="text" class="form-control span8" readonly />
+            <input type="text" class="form-control span8" readonly name="codigo" />
             <div class="btn-group">
-                <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('asesor', [ 'action' => 'buscar' ])?>" data-icon="icon-search" data-title="Buscar Asesor" class="btn btn-info" type="button"><i class="icon-search"></i></button>
+                <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('asesor', [ 'action' => 'mbuscar' ])?>" data-icon="icon-search" data-title="Buscar Asesoria" class="btn btn-info" type="button"><i class="icon-search"></i></button>
             </div>
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label">Alumno</label>
+        <label class="control-label">Codigo Evaluación</label>
         <div class="controls">
             <input type="text" class="form-control" readonly />
-            <input type="text" class="form-control span8" readonly />
+            <input type="text" class="form-control span8" readonly name="codigoeva"/>
             <div class="btn-group">
-                <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('estudiante', [ 'action' => 'mbuscar' ])?>" data-icon="icon-search" data-title="Buscar Asesor" class="btn btn-info" type="button"><i class="icon-search"></i></button>
+                <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('evaluacion', [ 'action' => 'mbuscar' ])?>" data-icon="icon-search" data-title="Buscar Evaluacion" class="btn btn-info" type="button"><i class="icon-search"></i></button>
             </div>
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label">Tesis</label>
-        <div class="controls">
-            <input type="text" readonly class="form-control span11">
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label">Fecha</label>
+        <label class="control-label">Fecha de Programación</label>
         <div class="controls">
             <input type="date" class="form-control">
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label">Hora</label>
+        <label class="control-label">Hora de Programación</label>
         <div class="controls">
             <input type="time" class="form-control">
         </div>
@@ -46,3 +40,5 @@
         </div>
     </div>
 </form>
+<script src="<?=$this->basePath('plugins/Asesoria.js')?>"></script>
+<script src="<?=$this->basePath('plugins/Evaluacion.js')?>"></script>
