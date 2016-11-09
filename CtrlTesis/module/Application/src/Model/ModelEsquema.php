@@ -47,7 +47,7 @@ class ModelEsquema implements InterfaceModel
                     $response['mensaje'] = 'Se ha guardado Correctamente el nuevo esquema.';
                     $response['estado'] = true;
                 }else{
-                    $response['mensaje'] = '';
+                    $response['mensaje'] = 'Error al intentar insertar el nuevo esquema';
                     $response['estado'] = false;
                 }
             }catch (\Exception $ex){
