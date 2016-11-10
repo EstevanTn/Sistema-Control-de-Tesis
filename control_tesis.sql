@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 02, 2016 at 05:06 AM
+-- Generation Time: Nov 09, 2016 at 08:24 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.5.37
 
@@ -35,6 +35,10 @@ DROP PROCEDURE IF EXISTS `pa_insertar_usuario`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `pa_insertar_usuario` (IN `nom_usu` VARCHAR(16), IN `passw` VARCHAR(40), IN `estado` CHAR(1), IN `pers_id` BIGINT(20), IN `tipo` BIGINT(20))  BEGIN
      INSERT INTO `usuario`(`usu_login`, `usu_password`, `usu_estado`, `per_id`, `tipo_usu_id`) VALUES (nom_usu, sha1(passw), estado, pers_id, tipo);
     END$$
+
+DROP PROCEDURE IF EXISTS `pa_InsertEsquema`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `pa_InsertEsquema` (IN `tramite` BIGINT(20), IN `titulo` VARCHAR(300), IN `palabras` VARCHAR(255), IN `objPrin` VARCHAR(255), IN `objSecun` VARCHAR(500), IN `resumenx` TEXT, IN `estado` VARCHAR(15), IN `usuarioId` BIGINT(20))  NO SQL
+INSERT INTO `esquema`(`tram_id`, `titulo_tesis`, `keyswords`, `obj_pri`, `obj_sec`, `resumen`, `esq_estado`, `esq_fecha`, `usu_id`) VALUES (tramite, titulo, palabras, objPrin, objSecun,resumenx, estado, CURRENT_TIMESTAMP, usuarioId)$$
 
 DROP PROCEDURE IF EXISTS `pa_verificarLogin`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `pa_verificarLogin` (IN `login` VARCHAR(16), IN `pass` VARCHAR(41))  NO SQL
@@ -195,7 +199,8 @@ CREATE TABLE `esquema` (
 
 INSERT INTO `esquema` (`tram_id`, `titulo_tesis`, `keyswords`, `obj_pri`, `obj_sec`, `resumen`, `esq_estado`, `esq_fecha`, `usu_id`) VALUES
 (1, 'Relacion de la practica de valores sociales y la disciplina escolar de los estudiantes del 4° ciclo de educacion primaria del centro de desarrollo comunal de el porvenir.', 'Relacion, Disciplina, Eduacacion, Viabilidad', 'Fortalecer los Valores en los jovenes hoy en dia', 'Asignar valores en cada hogar, Mejorar la educacion Vial', 'Relacion de la practica de valores sociales y la disciplina escolar de los estudiantes del 4° ciclo de educacion primaria del centro de desarrollo comunal de el porvenir.', 'APROBADO', '2016-09-29 09:38:26', 3),
-(2, 'Programa tutorial para fortalecer las habilidades sociales en los estudiantes del 4°to Grado de educacion primaria de la I.E 81014 Pedro Mercedes Ureña "Centro Viejo" Trujillo 2012', 'Tutorial, Fortalecimiento, Abiabilidad', 'Fortalecer las habilidades de las personas', 'Ofrecer Charlas, Mejorar el rendimiento social', 'Programa tutorial para fortalecer las habilidades sociales en los estudiantes del 4°to Grado de educacion primaria de la I.E 81014 Pedro Mercedes Ureña "Centro Viejo" Trujillo 2012', 'PRESENTADO', '2016-09-29 09:38:26', 3);
+(2, 'Programa tutorial para fortalecer las habilidades sociales en los estudiantes del 4°to Grado de educacion primaria de la I.E 81014 Pedro Mercedes Ureña "Centro Viejo" Trujillo 2012', 'Tutorial, Fortalecimiento, Abiabilidad', 'Fortalecer las habilidades de las personas', 'Ofrecer Charlas, Mejorar el rendimiento social', 'Programa tutorial para fortalecer las habilidades sociales en los estudiantes del 4°to Grado de educacion primaria de la I.E 81014 Pedro Mercedes Ureña "Centro Viejo" Trujillo 2012', 'PRESENTADO', '2016-09-29 09:38:26', 3),
+(4, 'Hola mundo', 'sd', 'sd', 'sd', 'sd', 'PRESENTADO', '2016-11-09 06:59:52', 17);
 
 -- --------------------------------------------------------
 
@@ -393,6 +398,13 @@ CREATE TABLE `programacion` (
   `prog_hora` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `prog_f_reg` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `programacion`
+--
+
+INSERT INTO `programacion` (`prog_id`, `asesoria_id`, `eva_id`, `prog_fecha`, `prog_hora`, `prog_f_reg`) VALUES
+(1, 5, 1, '2016-11-12', '13:40', '2016-11-09 05:26:47');
 
 -- --------------------------------------------------------
 
@@ -869,7 +881,7 @@ ALTER TABLE `persona`
 -- AUTO_INCREMENT for table `programacion`
 --
 ALTER TABLE `programacion`
-  MODIFY `prog_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `prog_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tipo_usuario`
 --

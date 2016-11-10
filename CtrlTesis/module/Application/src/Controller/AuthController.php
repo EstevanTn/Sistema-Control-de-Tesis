@@ -34,5 +34,12 @@ class AuthController extends AbstractActionController
         session_destroy();
         $this->redirect()->toRoute('auth');
     }
+    
+    public function recuperarAction (){
+        $this->layout('layout/layout0');
+        return new ViewModel();
+        
+    }
+    
 
 }

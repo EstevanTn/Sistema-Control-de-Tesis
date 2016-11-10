@@ -10,6 +10,11 @@
     </li>
     <li>Nuevo Esquema</li>
 </ul>
+<?php if ($post):?>
+<div class="alert alert-<?=$estado?'success':'danger'?>">
+    <p><?=$mensaje?></p>
+</div>
+<?php endif;?>
 <div  class="row-fluid form-horizontal">
     <div class="box span12">
         <div class="box-header-tabs">
@@ -97,6 +102,12 @@
                             <label class="control-label">Objetivos Secundarios</label>
                             <div class="controls">
                                 <textarea name="objSecundarios" class="cleditor size-y"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Resumen</label>
+                            <div class="controls">
+                                <textarea name="resumen" class="cleditor size-y"></textarea>
                             </div>
                         </div>
                         <div class="control-group">
