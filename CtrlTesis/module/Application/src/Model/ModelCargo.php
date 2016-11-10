@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: root
- * Date: 02/11/16
- * Time: 01:18 AM
+ * User: tnqsoft
+ * Date: 31/10/16
+ * Time: 06:29 PM
  */
 
 namespace Application\Model;
@@ -11,7 +11,8 @@ namespace Application\Model;
 
 use Zend\Db\Adapter\Adapter;
 
-class ModelAsesor implements InterfaceModel
+
+class ModelCargo implements InterfaceModel
 {
 
     public $dbAdapter;
@@ -23,7 +24,8 @@ class ModelAsesor implements InterfaceModel
 
     public function fetchAll()
     {
-        $statement = $this->dbAdapter->query("SELECT * FROM view_asesor");
+        $sql = "SELECT * FROM cargo";
+        $statement = $this->dbAdapter->query($sql);
         $results = $statement->execute();
         $list = array();
         foreach ($results as $item){
@@ -34,32 +36,22 @@ class ModelAsesor implements InterfaceModel
 
     public function insert()
     {
-        $response = array();
-        $response['post'] = false;
-        if(isset($_POST['submit'])){
-            $response['post'] = true;
-            $codigo = $_POST['codigo'];
-            $sql = sprintf("CALL insert_asesor()");
-            $statement = $this->dbAdapter->query($sql);
-            $result = $statement->execute();
 
-        }
-        return $response;
     }
 
     public function update()
     {
-        // TODO: Implement update() method.
+
     }
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+
     }
 
     public function get($id)
     {
-        
+
     }
 
     public function search(array $data)

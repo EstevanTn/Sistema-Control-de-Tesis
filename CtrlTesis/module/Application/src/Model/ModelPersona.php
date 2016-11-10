@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: root
  * Date: 02/11/16
- * Time: 04:15 AM
+ * Time: 01:18 AM
  */
 
 namespace Application\Model;
@@ -11,11 +11,11 @@ namespace Application\Model;
 
 use Zend\Db\Adapter\Adapter;
 
-class ModelJurado implements InterfaceModel
+class ModelPersona implements InterfaceModel
 {
 
     public $dbAdapter;
-    
+
     public function __construct(Adapter $adapter)
     {
         $this->dbAdapter = $adapter;
@@ -23,28 +23,19 @@ class ModelJurado implements InterfaceModel
 
     public function fetchAll()
     {
-        $sql = sprintf("SELECT * FROM view_jurado");
+        $sql = sprintf("SELECT * FROM persona");
         $statement = $this->dbAdapter->query($sql);
         $results = $statement->execute();
-        $list = array();
-        foreach ($results as $r){
-            $list[] = $r;
+        $list =array();
+        foreach ($results as $row){
+            $list[] = $row;
         }
         return $list;
     }
 
-    public function insert(){
-        $response = array();
-        $response['post'] = false;
-        if(isset($_POST['submit'])){
-            $response['post'] = true;
-            $codigo = $_POST['codigo'];
-            $sql = sprintf("CALL pa_insert_jurado()");
-            $statement = $this->dbAdapter->query($sql);
-            $result = $statement->execute();
-
-        }
-        return $response;
+    public function insert()
+    {
+        // TODO: Implement insert() method.
     }
 
     public function update()

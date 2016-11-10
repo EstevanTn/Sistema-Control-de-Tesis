@@ -1,0 +1,42 @@
+<div class="page-header">
+    <h3>Nuevo Jurado</h3>
+</div>
+<form class="form-horizontal">
+    <div class="control-group">
+        <label class="control-label">Codigo Docente</label>
+        <div class="controls">
+            <input type="text" class="form-control" readonly name="codigo"/>
+            <input type="text" class="form-control span8" readonly name="nombre" />
+
+            <div class="btn-group">
+                <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('docente', [ 'action' => 'mbuscar' ])?>" data-icon="icon-search" data-title="Buscar Asesoria" class="btn btn-info" type="button"><i class="icon-search"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Codigo Cargo</label>
+        <div class="controls">
+            <input type="text" class="form-control" readonly name="codigoca"/>
+            <input type="text" class="form-control span8" readonly name="nombreca" />
+
+            <div class="btn-group">
+                <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('cargo', [ 'action' => 'mbuscar' ])?>" data-icon="icon-search" data-title="Buscar Asesoria" class="btn btn-info" type="button"><i class="icon-search"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="control-group">
+
+        <label class="control-label">Tipo Jurado</label>
+        <div class="controls">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="pull-right">
+            <button class="btn btn-primary"><i class="glyphicon glyphicon-saved"></i> GUARDAR</button>
+        </div>
+    </div>
+</form>
+<script src="<?=$this->basePath('plugins/Docente.js')?>"></script>
+<script src="<?=$this->basePath('plugins/Evaluacion.js')?>"></script>
+<script src="<?=$this->basePath('plugins/Cargo.js')?>"></script>

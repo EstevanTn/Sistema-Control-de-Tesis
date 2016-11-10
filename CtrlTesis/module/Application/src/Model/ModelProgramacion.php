@@ -34,9 +34,18 @@ class ModelProgramacion implements InterfaceModel
         return $list;
     }
 
-    public function insert()
-    {
+    public function insert(){
+        $response = array();
+        $response['post'] = false;
+        if(isset($_POST['submit'])){
+            $response['post'] = true;
+            $codigo = $_POST['codigo'];
+            $sql = sprintf("CALL pa_InsertEsquema()");
+            $statement = $this->dbAdapter->query($sql);
+            $result = $statement->execute();
 
+        }
+        return $response;
     }
 
     public function update()

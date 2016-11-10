@@ -1,18 +1,19 @@
-var Evaluacion = (function () {
+var Cargo = (function () {
     var instance;
     return{
-        elegir: function (codigo, estado) {
+        elegir: function (codigo, nombre) {
             instance = {
                 codigo: codigo,
-                estado: estado,
+                nombre: nombre,
+
             };
             this.loadInfo();
 
         },
         instance: instance,
         loadInfo: function () {
-            $('[name=codigoeva]').val(instance.codigo);
-            $('[name=estado]').val(instance.estado);
+            $('[name=codigoca]').val(instance.codigo);
+            $('[name=nombreca]').val(instance.nombre);
 
         },
 

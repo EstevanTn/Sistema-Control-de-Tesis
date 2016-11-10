@@ -22,7 +22,7 @@
                 <td><?=$this->escapeHtml($item['eva_estado'])?></td>
                 <td><?=$this->escapeHtml($item['eva_descripcion'])?></td>
                 <td>
-                    <button data-role="close-modal" data-action="Evaluacion.elegir('<?=$item['eva_id']?>')" class="btn btn-primary"><i class="icon-check"></i></button>
+                    <button data-role="close-modal" data-action="Evaluacion.elegir('<?=$item['eva_id']?>','<?=$item['eva_estado']?>')" class="btn btn-primary"><i class="icon-check"></i></button>
                 </td>
             </tr>
 

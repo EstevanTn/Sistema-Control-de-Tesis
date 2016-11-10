@@ -10,34 +10,26 @@
                 <div class="control-group">
                     <label class="control-label">Código</label>
                     <div class="controls">
-                        <div class="input-prepend input-append">
-                            <input type="text" class="form-control" />
-                            <a href="#" class="btn btn-default" ><i class="icon-search"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">DNI</label>
-                    <div class="controls">
-                        <input type="text" readonly class="form-control" />
+                        <input readonly class="form-control" type="text" name="codigo">
+                        <button data-style="modal-lg" data-role="modal-async" data-href="<?=$this->url('docente', [ 'action' => 'mbuscar' ])?>" data-icon="icon-search" data-title="Buscar Docente" class="btn btn-info" type="button"><i class="icon-search"></i></button>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Nombres</label>
                     <div class="controls">
-                        <input type="text" class="form-control size-y" name="nombres" readonly>
+                        <input type="text" class="form-control size-y" name="nombre" readonly>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Ap. Paterno</label>
                     <div class="controls">
-                        <input type="text" class="form-control size-y" name="ape_pat" readonly>
+                        <input type="text" class="form-control size-y" name="apepat" readonly>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Ap. Materno</label>
                     <div class="controls">
-                        <input type="text" class="form-control" name="ape_mat" readonly>
+                        <input type="text" class="form-control size-y" name="apemat" readonly>
                     </div>
                 </div>
                 <div class="form-group pull-right">
@@ -55,16 +47,8 @@
                     </div>
                 </div>
             </div>
-            <table class="row-fluid table table-bordered table-hover">
-                <thead>
-                <th>#</th>
-                <th>Alumno</th>
-                <th>Titulo Tesis</th>
-                </thead>
-                <tbody>
 
-                </tbody>
-            </table>
         </div>
     </div>
 </form>
+<script src="<?=$this->basePath('plugins/Docente.js')?>"></script>

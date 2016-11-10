@@ -162,6 +162,48 @@ return [
                     ],
                 ],
             ],
+            'evaluacion' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/evaluacion[/:action[/:key]]',
+                    'defaults' => [
+                        'controller' => Controller\EvaluacionController::class,
+                        'action'     => 'index',
+                        'constraints' => [
+                            'action' => '[a-z]+',
+                            'key' => '[0-9]+'
+                        ],
+                    ],
+                ],
+            ],
+            'persona' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/persona[/:action[/:key]]',
+                    'defaults' => [
+                        'controller' => Controller\PersonaController::class,
+                        'action'     => 'index',
+                        'constraints' => [
+                            'action' => '[a-z]+',
+                            'key' => '[0-9]+'
+                        ],
+                    ],
+                ],
+            ],
+            'cargo' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/cargo[/:action[/:key]]',
+                    'defaults' => [
+                        'controller' => Controller\CargoController::class,
+                        'action'     => 'index',
+                        'constraints' => [
+                            'action' => '[a-z]+',
+                            'key' => '[0-9]+'
+                        ],
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
@@ -176,6 +218,10 @@ return [
             Controller\ProgramacionController::class => InvokableFactory::class,
             Controller\UsuarioController::class => InvokableFactory::class,
             Controller\TesisController::class => InvokableFactory::class,
+            Controller\EvaluacionController::class => InvokableFactory::class,
+            Controller\PersonaController::class => InvokableFactory::class,
+            Controller\CargoController::class => InvokableFactory::class,
+
         ],
     ],
     'view_manager' => [
