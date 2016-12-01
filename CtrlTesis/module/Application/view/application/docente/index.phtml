@@ -1,0 +1,50 @@
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i>
+        <a href="<?=$this->url('home')?>">Inicio</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="#" class="disabled">Lista de Docentes</a>
+    </li>
+</ul>
+<div class="row-fluid">
+    <div class="form-group">
+        <div class="btn-group">
+            <a href="<?=$this->url('docente', ['action'=>'nuevo'])?>" class="btn btn-success"><span class="icon-plus"></span> NUEVO</a>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">LISTA DE DOCENTES</h2>
+        </div>
+    </div>
+    <table class="panel-body table table-bordered table-hover">
+        <thead>
+        <tr>
+            <td>#</td>
+            <td>CÓDIGO</td>
+            <td>DNI</td>
+            <td>NOMBRE</td>
+            <td>APELLIDOS</td>
+            <td>TELÉFONO</td>
+            <td>DIRECCIÓN</td>
+            <td>EDITAR</td>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($list as $item):?>
+            <tr>
+                <td><?=$item['doc_id']?></td>
+                <td><?=$item['doc_codigo']?></td>
+                <td><?=$item['per_dni']?></td>
+                <td><?=$item['per_nombre']?></td>
+                <td><?=$item['per_ape_pat'].' '.$item['per_ape_mat']?></td>
+                <td><?=$item['per_telefono']?></td>
+                <td><?=$item['per_direccion']?></td>
+                <td><a class="btn btn-info" href="<?=$this->url('docente',['action'=>'editar','key'=> $item['doc_id']])?>"><span class="icon-edit"></span></a></td>
+            </tr>
+        <?php endforeach;?>
+        </tbody>
+    </table>
+</div>

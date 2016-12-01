@@ -1,0 +1,91 @@
+<ul class="breadcrumb">
+    <li>
+        <i class="icon-home"></i>
+        <a href="<?=$this->url('home')?>">Inicio</a>
+        <i class="icon-angle-right"></i>
+    </li>
+    <li>
+        <a href="#" class="disabled">Nuevo Docente</a>
+    </li>
+</ul>
+<?php if ($post):?>
+    <div class="alert alert-<?=$estado?'success':'danger'?>">
+        <p><?=$mensaje?></p>
+    </div>
+<?php endif;?>
+<div class="row-fluid">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2 class="panel-title">NUEVO DOCENTE</h2>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" method="post">
+                <div class="control-group">
+                    <label class="control-label">CÓDIGO</label>
+                    <div class="controls">
+                        <input class="form-control" required name="codigo" type="text" validate="numeric" data-length="10">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">DNI</label>
+                    <div class="controls">
+                        <input class="form-control" required type="text" name="dni" validate="numeric" data-length="8">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">NOMBRES</label>
+                    <div class="controls">
+                        <input class="form-control span11" required type="text" name="nombre" validate="text" data-length="50">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">APE. PATERNO</label>
+                    <div class="controls">
+                        <input class="form-control span11" required type="text" name="ape_paterno" validate="text" data-length="50">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">APE. MATERNO</label>
+                    <div class="controls">
+                        <input class="form-control span11" required type="text" name="ape_materno" validate="text" data-length="50">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">FECHA NAC.</label>
+                    <div class="controls">
+                        <input class="form-control" type="date" name="fecha">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">DIRECCIÓN</label>
+                    <div class="controls">
+                        <input class="form-control span11" type="text" name="direccion" validate="text" data-length="70">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">TELÉFONO</label>
+                    <div class="controls">
+                        <input class="form-control" type="text" name="telefono" validate="numeric" data-length="9">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">EMAIL</label>
+                    <div class="controls">
+                        <div class="span5">
+                            <input class="form-control size-y" type="email" name="email" data-msg="#err-email" validate="email" data-length="50">
+                        </div>
+                        <div class="span5">
+                            <p id="err-email"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group pull-right">
+                    <div class="btn-group">
+                        <a href="<?=$this->url('docente')?>" class="btn btn-default"><span class="icon-list"></span> LISTA DE DOCENTES</a>
+                        <button name="submit" class="btn btn-primary"><span class="icon-save"></span> GUARDAR</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

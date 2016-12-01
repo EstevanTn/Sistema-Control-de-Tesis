@@ -1,0 +1,29 @@
+<div class="row-fluid">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title"><?=$title?></h2>
+        </div>
+        <table class="panel-body table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>CÓDIGO</th>
+                    <th>NOMBRE</th>
+                    <th>APELLIDOS</th>
+                    <th>ESQUEMA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($list as $item):?>
+                    <tr>
+                        <td><input type="checkbox" class="form-control" /></td>
+                        <td><?=$item['est_codigo']?></td>
+                        <td><?=$item['per_nombre']?></td>
+                        <td><?=$item['per_ape_pat'].' '.$item['per_ape_mat']?></td>
+                        <td><a class="btn btn-link" href="<?=$this->url('esquema', ['action'=>'editar', 'key'=>$item['tram_id']])?>">VER ESQUEMA</a></td>
+                    </tr>
+                <?php endforeach;?>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="row-fluid">
+    <table id="tbDocente" class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th>CODIGO DOCENTE</th>
+            <th>NOMBRE DOCENTE</th>
+            <th>APELLIDO PATERNO</th>
+            <th>APELLIDO MATERNO</th>
+            <th>ELEGIR</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <?php foreach ($docente as $item):?>
+
+            <tr>
+                <td><?=$this->escapeHtml($item['doc_codigo'])?></td>
+                <td><?=$this->escapeHtml($item['per_nombre'])?></td>
+                <td><?=$this->escapeHtml($item['per_ape_pat'])?></td>
+                <td><?=$this->escapeHtml($item['per_ape_mat'])?></td>
+                <td>
+                    <button data-role="close-modal" data-action="Docente.elegir('<?=$item['doc_codigo']?>','<?=$item['per_nombre']?>','<?=$item['per_ape_pat']?>','<?=$item['per_ape_mat']?>')" class="btn btn-primary"><i class="icon-check"></i></button>
+                </td>
+            </tr>
+
+        <?php endforeach;?>
+
+        </tbody>
+    </table>
+</div>
